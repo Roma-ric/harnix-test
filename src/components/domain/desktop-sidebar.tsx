@@ -1,16 +1,20 @@
 "use client";
 
 import { Card } from "@/components/ui/card";
-import { NavBarItems } from "@/lib/nav-bar-utils";
+import { DesktopSideBarItems } from "@/lib/nav-bar-utils";
 import { Button } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { OverviewKPIs } from "@/lib/overview-utils";
+import { ArrowRight } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-const NavBar = () => {
+const DesktopSideBar = ({ className }: { className?: string }) => {
   const pathname = usePathname();
 
+  const kpiAlert = OverviewKPIs[2];
   return (
-    <Card className="min-h-full! max-h-full! p-0 pt-2 w-80 bg-transparent border-none rounded-none shadow-none">
+    <Card className={cn("min-h-full! max-h-full! p-0 pt-2 w-80 bg-transparent border-none rounded-none shadow-none flex flex-col", className)}>
       {/* Logo */}
       <div className="border-b border-pulsai-gray-light/5 pb-4">
         <h1 className="font-heading text-xl">
@@ -22,7 +26,7 @@ const NavBar = () => {
       <div className="flex flex-col overflow-y-auto hide-scrollbar justify-between flex-1 w-full space-y-1 text-white">
         {/* Menu */}
         <div className="flex flex-col text-sm space-y-5">
-          {NavBarItems.map((item) => (
+          {DesktopSideBarItems.map((item) => (
             <div key={item.label}>
               <h2 className="uppercase px-2 mb-2"> {item.label} </h2>
               <div className="flex flex-col space-y-1">
@@ -41,11 +45,34 @@ const NavBar = () => {
             </div>
           ))}
         </div>
-        {/* Alert */}
-        <Card className="bg-white/15 h-40 text-white p-5 text-sm rounded-4xl border-none"></Card>
+
+        {/* KPI Alert */}
+        <Link href={"/tickets"}>
+          <Card
+            className={`relative overflow-hidden w-full 2xl:w-[20rem] font-mono p-5 bg-linear-to-tr from-pulsai-gray-light to-white`}
+          >
+            <div className="flex items-center space-x-2 -mt-1">
+              <kpiAlert.icon className={`text-${kpiAlert.className} w-5`} />
+              <span className="font-extralight mt-1"> {kpiAlert.label} </span>
+            </div>
+            <div className="font-bold text-4xl -mt-4">{kpiAlert.count}</div>
+            <kpiAlert.icon
+              className={`absolute -bottom-4 -right-4 text-${kpiAlert.className} size-20 opacity-10`}
+            />
+            <Button className="absolute right-0 top-[23%] w-min -mr-5">
+              <ArrowRight className="mr-5" />
+            </Button>
+            {kpiAlert.description && (
+              <div className="text-xs -mt-4 truncate">
+                {" "}
+                {kpiAlert.description}{" "}
+              </div>
+            )}
+          </Card>
+        </Link>
       </div>
     </Card>
   );
 };
 
-export default NavBar;
+export default DesktopSideBar;

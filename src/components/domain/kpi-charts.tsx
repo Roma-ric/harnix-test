@@ -1,53 +1,40 @@
-import React, { useState } from 'react';
-import { Area, AreaChart, Bar, BarChart, Line, LineChart, PolarAngleAxis, PolarGrid, PolarRadiusAxis, Radar, RadarChart, RadialBar, RadialBarChart, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
+import {
+  Area,
+  AreaChart,
+  Bar,
+  BarChart,
+  Line,
+  LineChart,
+  PolarAngleAxis,
+  PolarGrid,
+  PolarRadiusAxis,
+  Radar,
+  RadarChart,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Legend,
+} from "recharts";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart";
+import {
+  interventionTypeData,
+  ticketsData,
+  resolutionData,
+  satisfactionData,
+} from "@/lib/kpi-charts-utils";
 
 const KpiCharts = () => {
-  // Données pour les interventions par type (Humaine vs IA)
-  const interventionTypeData = [
-    { type: 'Jan', humaine: 145, ia: 89 },
-    { type: 'Fév', humaine: 132, ia: 112 },
-    { type: 'Mar', humaine: 128, ia: 145 },
-    { type: 'Avr', humaine: 115, ia: 178 },
-    { type: 'Mai', humaine: 98, ia: 203 },
-    { type: 'Jun', humaine: 87, ia: 234 },
-  ];
-
-  // Données pour les tickets par mois
-  const ticketsData = [
-    { mois: 'Jan', total: 234, resolus: 198, enCours: 36 },
-    { mois: 'Fév', total: 244, resolus: 215, enCours: 29 },
-    { mois: 'Mar', total: 273, resolus: 241, enCours: 32 },
-    { mois: 'Avr', total: 293, resolus: 267, enCours: 26 },
-    { mois: 'Mai', total: 301, resolus: 278, enCours: 23 },
-    { mois: 'Jun', total: 321, resolus: 298, enCours: 23 },
-  ];
-
-  // Données pour le taux de résolution
-  const resolutionData = [
-    { mois: 'Jan', taux: 84.6 },
-    { mois: 'Fév', taux: 88.1 },
-    { mois: 'Mar', taux: 88.3 },
-    { mois: 'Avr', taux: 91.1 },
-    { mois: 'Mai', taux: 92.4 },
-    { mois: 'Jun', taux: 92.8 },
-  ];
-
-  // Données pour la satisfaction client
-  const satisfactionData = [
-    { category: 'Rapidité', score: 92 },
-    { category: 'Qualité', score: 88 },
-    { category: 'Communication', score: 85 },
-    { category: 'Résolution', score: 91 },
-    { category: 'Professionnalisme', score: 94 },
-  ];
-
-  // Données radiales pour la satisfaction globale
-  const satisfactionRadialData = [
-    { name: 'Satisfaction', value: 89.5, fill: '#10b981' },
-  ];
-
   const chartConfig = {
     humaine: {
       label: "Humaine",
@@ -75,20 +62,69 @@ const KpiCharts = () => {
     },
   };
 
-  return (
-    <div className="w-full min-h-screen bg-linear-to-br from-slate-50 to-slate-100 p-8">
-      <div className="max-w-7xl mx-auto space-y-8">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-slate-900 mb-2">
-            Tableau de Bord des Interventions
-          </h1>
-          <p className="text-slate-600">
-            Analyse des performances et satisfaction client
-          </p>
-        </div>
+  // Calcul du taux de satisfaction moyen
+  const satisfactionRate =
+    satisfactionData.reduce((acc, item) => acc + item.score, 0) /
+    satisfactionData.length;
 
+  // Calcul du taux de résolution du dernier mois
+  const resolutionRate = resolutionData[resolutionData.length - 1].taux;
+
+  // Calcul du pourcentage d'adoption de l'IA (croissance)
+  const aiAdoptedPercentage = (() => {
+    const firstMonth = interventionTypeData[0].ia;
+    const lastMonth = interventionTypeData[interventionTypeData.length - 1].ia;
+    return (((lastMonth - firstMonth) / firstMonth) * 100).toFixed(1);
+  })();
+
+  return (
+    <div className="mt-3 lg:mt-5 pb-3">
+      {/* Statistiques résumées */}
+      <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-5 2xl:max-w-400">
+        <Card className="shadow bg-blue-50 border-blue-200">
+          <CardHeader className="pb-2">
+            <CardDescription className="text-pulsai-primary">
+              Total Tickets
+            </CardDescription>
+            <CardTitle className="text-3xl text-pulsai-primary">645</CardTitle>
+          </CardHeader>
+        </Card>
+        <Card className="shadow bg-green-50 border-green-200">
+          <CardHeader className="pb-2">
+            <CardDescription className="text-green-600">
+              Taux Résolution
+            </CardDescription>
+            <CardTitle className="text-3xl text-green-700">
+              {resolutionRate.toFixed(1)}%
+            </CardTitle>
+          </CardHeader>
+        </Card>
+        <Card className="shadow bg-purple-50 border-purple-200">
+          <CardHeader className="pb-2">
+            <CardDescription className="text-purple-600">
+              IA Adoptée
+            </CardDescription>
+            <CardTitle className="text-3xl text-purple-700">
+              +{aiAdoptedPercentage}%
+            </CardTitle>
+          </CardHeader>
+        </Card>
+        <Card className="shadow bg-pink-50 border-pink-200">
+          <CardHeader className="pb-2">
+            <CardDescription className="text-pink-600">
+              Satisfaction
+            </CardDescription>
+            <CardTitle className="text-3xl text-pink-700">
+              {satisfactionRate.toFixed(1)}%
+            </CardTitle>
+          </CardHeader>
+        </Card>
+      </div>
+
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
+        
         {/* Area Chart - Interventions Humaine vs IA */}
-        <Card className="shadow-lg">
+        <Card className="shadow">
           <CardHeader>
             <CardTitle>Interventions par Type</CardTitle>
             <CardDescription>
@@ -98,7 +134,10 @@ const KpiCharts = () => {
           <CardContent>
             <ChartContainer config={chartConfig} className="h-[300px] w-full">
               <AreaChart data={interventionTypeData}>
-                <CartesianGrid strokeDasharray="3 3" className="stroke-slate-200" />
+                <CartesianGrid
+                  strokeDasharray="3 3"
+                  className="stroke-slate-200"
+                />
                 <XAxis dataKey="type" />
                 <YAxis />
                 <ChartTooltip content={<ChartTooltipContent />} />
@@ -127,7 +166,7 @@ const KpiCharts = () => {
         </Card>
 
         {/* Bar Chart - Tickets par mois */}
-        <Card className="shadow-lg">
+        <Card className="shadow">
           <CardHeader>
             <CardTitle>Tickets par Mois</CardTitle>
             <CardDescription>
@@ -137,21 +176,39 @@ const KpiCharts = () => {
           <CardContent>
             <ChartContainer config={chartConfig} className="h-[300px] w-full">
               <BarChart data={ticketsData}>
-                <CartesianGrid strokeDasharray="3 3" className="stroke-slate-200" />
+                <CartesianGrid
+                  strokeDasharray="3 3"
+                  className="stroke-slate-200"
+                />
                 <XAxis dataKey="mois" />
                 <YAxis />
                 <ChartTooltip content={<ChartTooltipContent />} />
                 <Legend />
-                <Bar dataKey="total" fill="#06b6d4" name="Total" radius={[8, 8, 0, 0]} />
-                <Bar dataKey="resolus" fill="#10b981" name="Résolus" radius={[8, 8, 0, 0]} />
-                <Bar dataKey="enCours" fill="#f59e0b" name="En cours" radius={[8, 8, 0, 0]} />
+                <Bar
+                  dataKey="total"
+                  fill="#06b6d4"
+                  name="Total"
+                  radius={[8, 8, 0, 0]}
+                />
+                <Bar
+                  dataKey="resolus"
+                  fill="#10b981"
+                  name="Résolus"
+                  radius={[8, 8, 0, 0]}
+                />
+                <Bar
+                  dataKey="enCours"
+                  fill="#f59e0b"
+                  name="En cours"
+                  radius={[8, 8, 0, 0]}
+                />
               </BarChart>
             </ChartContainer>
           </CardContent>
         </Card>
 
         {/* Line Chart - Taux de résolution */}
-        <Card className="shadow-lg">
+        <Card className="shadow">
           <CardHeader>
             <CardTitle>Taux de Résolution</CardTitle>
             <CardDescription>
@@ -161,7 +218,10 @@ const KpiCharts = () => {
           <CardContent>
             <ChartContainer config={chartConfig} className="h-[300px] w-full">
               <LineChart data={resolutionData}>
-                <CartesianGrid strokeDasharray="3 3" className="stroke-slate-200" />
+                <CartesianGrid
+                  strokeDasharray="3 3"
+                  className="stroke-slate-200"
+                />
                 <XAxis dataKey="mois" />
                 <YAxis domain={[80, 100]} />
                 <ChartTooltip content={<ChartTooltipContent />} />
@@ -180,102 +240,40 @@ const KpiCharts = () => {
           </CardContent>
         </Card>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Radar Chart - Satisfaction client */}
-          <Card className="shadow-lg">
-            <CardHeader>
-              <CardTitle>Satisfaction Client</CardTitle>
-              <CardDescription>
-                Évaluation multi-critères de la satisfaction
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ChartContainer config={chartConfig} className="h-[300px] w-full">
-                <RadarChart data={satisfactionData}>
-                  <PolarGrid stroke="#e2e8f0" />
-                  <PolarAngleAxis dataKey="category" tick={{ fill: '#64748b', fontSize: 12 }} />
-                  <PolarRadiusAxis angle={90} domain={[0, 100]} tick={{ fill: '#64748b' }} />
-                  <Radar
-                    name="Score"
-                    dataKey="score"
-                    stroke="#10b981"
-                    fill="#10b981"
-                    fillOpacity={0.5}
-                    strokeWidth={2}
-                  />
-                  <ChartTooltip content={<ChartTooltipContent />} />
-                </RadarChart>
-              </ChartContainer>
-            </CardContent>
-          </Card>
-
-          {/* Radial Chart - Satisfaction globale */}
-          <Card className="shadow-lg">
-            <CardHeader>
-              <CardTitle>Satisfaction Globale</CardTitle>
-              <CardDescription>
-                Score moyen de satisfaction client
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ChartContainer config={chartConfig} className="h-[300px] w-full">
-                <RadialBarChart
-                  data={satisfactionRadialData}
-                  startAngle={90}
-                  endAngle={-270}
-                  innerRadius="40%"
-                  outerRadius="100%"
-                >
-                  <PolarGrid gridType="circle" stroke="#e2e8f0" />
-                  <RadialBar
-                    dataKey="value"
-                    cornerRadius={10}
-                    fill="#10b981"
-                    background={{ fill: '#f1f5f9' }}
-                  />
-                  <text
-                    x="50%"
-                    y="50%"
-                    textAnchor="middle"
-                    dominantBaseline="middle"
-                    className="fill-slate-900 text-4xl font-bold"
-                  >
-                    {satisfactionRadialData[0].value}%
-                  </text>
-                  <ChartTooltip content={<ChartTooltipContent />} />
-                </RadialBarChart>
-              </ChartContainer>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Statistiques résumées */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <Card className="shadow-lg bg-blue-50 border-blue-200">
-            <CardHeader className="pb-2">
-              <CardDescription className="text-blue-600">Total Tickets</CardDescription>
-              <CardTitle className="text-3xl text-blue-700">1,666</CardTitle>
-            </CardHeader>
-          </Card>
-          <Card className="shadow-lg bg-green-50 border-green-200">
-            <CardHeader className="pb-2">
-              <CardDescription className="text-green-600">Taux Résolution</CardDescription>
-              <CardTitle className="text-3xl text-green-700">89.5%</CardTitle>
-            </CardHeader>
-          </Card>
-          <Card className="shadow-lg bg-purple-50 border-purple-200">
-            <CardHeader className="pb-2">
-              <CardDescription className="text-purple-600">IA Adoptée</CardDescription>
-              <CardTitle className="text-3xl text-purple-700">+162%</CardTitle>
-            </CardHeader>
-          </Card>
-          <Card className="shadow-lg bg-pink-50 border-pink-200">
-            <CardHeader className="pb-2">
-              <CardDescription className="text-pink-600">Satisfaction</CardDescription>
-              <CardTitle className="text-3xl text-pink-700">89.5%</CardTitle>
-            </CardHeader>
-          </Card>
-        </div>
+        {/* Radar Chart - Satisfaction client */}
+        <Card className="shadow">
+          <CardHeader>
+            <CardTitle>Satisfaction Client</CardTitle>
+            <CardDescription>
+              Évaluation multi-critères de la satisfaction
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ChartContainer config={chartConfig} className="h-[300px] w-full">
+              <RadarChart data={satisfactionData}>
+                <PolarGrid stroke="#e2e8f0" />
+                <PolarAngleAxis
+                  dataKey="category"
+                  tick={{ fill: "#64748b", fontSize: 12 }}
+                />
+                <PolarRadiusAxis
+                  angle={90}
+                  domain={[0, 100]}
+                  tick={{ fill: "#64748b" }}
+                />
+                <Radar
+                  name="Score"
+                  dataKey="score"
+                  stroke="#10b981"
+                  fill="#10b981"
+                  fillOpacity={0.5}
+                  strokeWidth={2}
+                />
+                <ChartTooltip content={<ChartTooltipContent />} />
+              </RadarChart>
+            </ChartContainer>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );

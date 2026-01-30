@@ -2,15 +2,15 @@
 
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
-import ProfileCard from "./profile-card";
+import ProfileSheet from "./profile-sheet";
 import Notifications from "./notifications";
-import KpiCharts from "./kpi-charts";
+import MobileSidebar from "./mobile-sidebar";
 
 const Header = () => {
   return (
-    <div className="w-full flex justify-between items-center">
+    <div className="w-full flex space-x-5 justify-between items-center">
       {/* Info */}
-      <div className="max-w-[24rem] mt-5">
+      <div className="max-w-[16rem] lg:max-w-[20rem] xl:max-w-[24rem] mt-5 opacity-0 h-15 lg:h-full lg:opacity-100 hidden md:block">
         <span className="font-semibold text-xl">Bienvenue, Romaric!</span>
         <br />
         <span className="text-sm">
@@ -18,9 +18,21 @@ const Header = () => {
         </span>
       </div>
 
-      <div className="flex items-center space-x-3 -mt-5">
+      <div className="border-b md:hidden flex items-center space-x-2 border-pulsai-gray-light/5 pb-4 pt-6">
+        {/* Mobile Ménu */}
+        <MobileSidebar />
+        <h1 className="font-heading text-xl">
+          <span className="text-pulsai-primary">Puls</span>
+          <span className="text-pulsai-secondary">AI</span>
+        </h1>
+      </div>
+
+      <div className="flex items-center space-x-3 lg:-mt-5">
         {/* Add Element */}
-        <Button variant={"secondary"} className="border rounded-full w-12 h-12">
+        <Button
+          variant={"secondary"}
+          className="border hidden md:flex bg-pulsai-secondary border-none  justify-center items-center rounded-full w-12 h-12"
+        >
           <Plus className="size-5 strok" />
         </Button>
 
@@ -28,11 +40,8 @@ const Header = () => {
         <Notifications />
 
         {/* Profile Card */}
-        <ProfileCard />
+        <ProfileSheet />
       </div>
-
-      {/* KPI Charts */}
-      <KpiCharts />
     </div>
   );
 };

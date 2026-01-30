@@ -9,7 +9,7 @@ import {
   Users2,
 } from "lucide-react";
 
-export interface NavBarItemType {
+export interface DesktopSideBarItemType {
   label: string;
   href: string;
   icon: LucideIcon;
@@ -18,7 +18,7 @@ export interface NavBarItemType {
 /**
  * Le menu de navigation
  */
-export const NavBarItems: { label: string; children: NavBarItemType[] }[] = [
+export const DesktopSideBarItems: { label: string; children: DesktopSideBarItemType[] }[] = [
   {
     label: "Menu",
     children: [

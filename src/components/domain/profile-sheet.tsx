@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/sheet";
 import { Building2, LogOut } from "lucide-react";
 
-const ProfileCard = () => {
+const ProfileSheet = () => {
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -20,31 +20,30 @@ const ProfileCard = () => {
           <AvatarFallback>AR</AvatarFallback>
         </Avatar>
       </SheetTrigger>
-      <SheetContent className="">
+      <SheetContent className="w-full! xs:max-w-sm bg-pulsai-gray-dark text-white xs:text-black border-none xs:border xs:bg-white">
         <SheetHeader className="border-b">
-          <SheetTitle className="flex items-center space-x-2">
+          <SheetTitle className="flex items-center space-x-2 text-white xs:text-black!">
             <Building2 className="text-pulsai-primary" />{" "}
             <span>Geek House Org</span>
           </SheetTitle>
-          <SheetDescription>
+          <SheetDescription className="text-white xs:text-black">
             Lorem ipsum, dolor sit amet consectetur elit.
           </SheetDescription>
         </SheetHeader>
-        <SheetDescription className="px-3">
-          <div className="flex items-center space-x-3">
+        <SheetDescription className="px-3 text-white xs:text-black ">
+          <div className="flex items-center space-x-3 w-full">
             <Avatar size="lg">
               <AvatarImage src="https://github.com/shadcn.png" />
               <AvatarFallback>AR</AvatarFallback>
             </Avatar>
-            <div className="text-black max-w-full text-sm overflow-hidden">
-              <span className="font-semibold"> Romaric AKODJENOU </span>
-              <br />
-              <span className="truncate">romaricakodjenou54@gmail.com</span>
+            <div className="max-w-[75%] overflow-hidden text-sm">
+              <div className="font-semibold truncate"> Romaric AKODJENOU </div>
+              <div className="truncate">romaricakodjenou54@gmail.com</div>
             </div>
           </div>
         </SheetDescription>
         <SheetFooter>
-          <Button variant={"ghost"} className="border w-full text-red-500">
+          <Button variant={"secondary"} className="border w-full text-red-500">
             <LogOut /> Se déconnecter
           </Button>
         </SheetFooter>
@@ -53,4 +52,4 @@ const ProfileCard = () => {
   );
 };
 
-export default ProfileCard;
+export default ProfileSheet;

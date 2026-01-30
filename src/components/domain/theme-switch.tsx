@@ -4,7 +4,7 @@ import * as React from "react"
 import * as SwitchPrimitive from "@radix-ui/react-switch"
 import { LucideIcon } from "lucide-react"
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils/utils"
 
 interface ThemeSwitchProps extends Omit<React.ComponentProps<typeof SwitchPrimitive.Root>, 'children'> {
   size?: "sm" | "default"

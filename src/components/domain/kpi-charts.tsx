@@ -32,7 +32,7 @@ import {
   ticketsData,
   resolutionData,
   satisfactionData,
-} from "@/lib/kpi-charts-utils";
+} from "@/utils/kpi-charts-utils";
 
 const KpiCharts = () => {
   const chartConfig = {

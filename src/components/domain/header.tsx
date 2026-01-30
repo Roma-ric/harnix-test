@@ -5,12 +5,23 @@ import { Plus } from "lucide-react";
 import ProfileSheet from "./profile-sheet";
 import Notifications from "./notifications";
 import MobileSidebar from "./mobile-sidebar";
+import { usePathname } from "next/navigation";
+import { cn } from "@/utils/utils";
 
 const Header = () => {
+  const pathname = usePathname();
+
+  const showInfo = !pathname.startsWith("/chats");
+
   return (
     <div className="w-full flex space-x-5 justify-between items-center">
       {/* Info */}
-      <div className="max-w-[16rem] lg:max-w-[20rem] xl:max-w-[24rem] mt-5 opacity-0 h-15 lg:h-full lg:opacity-100 hidden md:block">
+      <div
+        className={cn(
+          "max-w-[16rem] lg:max-w-[20rem] xl:max-w-[24rem] mt-5 h-15 lg:h-full  hidden md:block",
+          !showInfo ? "opacity-0 lg:opacity-0" : "opacity-0 lg:opacity-100",
+        )}
+      >
         <span className="font-semibold text-xl">Bienvenue, Romaric!</span>
         <br />
         <span className="text-sm">

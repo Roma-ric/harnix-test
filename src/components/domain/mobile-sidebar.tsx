@@ -11,10 +11,14 @@ import {
 import { Menu } from "lucide-react";
 import { Button } from "../ui/button";
 import DesktopSideBar from "./desktop-sidebar";
+import { useState } from "react";
 
 const MobileSidebar = () => {
+
+  const [open, setOpen] = useState<boolean>(false);
+
   return (
-    <Sheet>
+    <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
         <Button
           variant={"secondary"}
@@ -32,7 +36,7 @@ const MobileSidebar = () => {
           <SheetTitle></SheetTitle>
         </SheetHeader>
         <SheetDescription className="px-3 pb-3 h-full">
-          <DesktopSideBar className="w-full!" />
+          <DesktopSideBar className="w-full!" setOpen={setOpen} />
         </SheetDescription>
       </SheetContent>
     </Sheet>

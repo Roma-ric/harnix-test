@@ -6,9 +6,10 @@ import {
   MessageSquareText,
   Settings,
   Ticket,
+  Users2,
 } from "lucide-react";
 
-interface NavBarItemType {
+export interface NavBarItemType {
   label: string;
   href: string;
   icon: LucideIcon;
@@ -17,35 +18,50 @@ interface NavBarItemType {
 /**
  * Le menu de navigation
  */
-export const NavBarItems: NavBarItemType[] = [
+export const NavBarItems: { label: string; children: NavBarItemType[] }[] = [
   {
-    label: "Vue d'ensemble",
-    href: "/",
-    icon: LayoutDashboard,
-  },
-  {
-    label: "Conversations",
-    href: "/chats",
-    icon: MessageSquareText,
-  },
-  {
-    label: "Tickets",
-    href: "/tickets",
-    icon: Ticket,
-  },
-  {
-    label: "Campagnes",
-    href: "/campaigns",
-    icon: ClipboardList,
-  },
-  {
-    label: "Statistiques",
-    href: "/stats",
-    icon: ChartNoAxesCombined,
+    label: "Menu",
+    children: [
+      {
+        label: "Vue d'ensemble",
+        href: "/",
+        icon: LayoutDashboard,
+      },
+      {
+        label: "Conversations",
+        href: "/chats",
+        icon: MessageSquareText,
+      },
+      {
+        label: "Tickets",
+        href: "/tickets",
+        icon: Ticket,
+      },
+      {
+        label: "Campagnes",
+        href: "/campaigns",
+        icon: ClipboardList,
+      },
+      {
+        label: "Clients",
+        href: "/custumers",
+        icon: Users2,
+      },
+      {
+        label: "Statistiques",
+        href: "/stats",
+        icon: ChartNoAxesCombined,
+      },
+    ],
   },
   {
     label: "Paramètres",
-    href: "/settings",
-    icon: Settings,
+    children: [
+      {
+        label: "Paramètres",
+        href: "/settings",
+        icon: Settings,
+      },
+    ],
   },
 ];

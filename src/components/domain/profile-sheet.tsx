@@ -16,7 +16,7 @@ const ProfileSheet = () => {
     <Sheet>
       <SheetTrigger asChild>
         <Avatar className="w-12 h-12 cursor-pointer">
-          <AvatarImage src="https://github.com/shadcn.png" />
+          <AvatarImage src="https://lh3.googleusercontent.com/a/ACg8ocL9Rnmlx4OZ-YoremGGwU698V0Bx1rAJWoeCnebSvAuQ1lRxpQ=s288-c-no" />
           <AvatarFallback>AR</AvatarFallback>
         </Avatar>
       </SheetTrigger>
@@ -33,7 +33,7 @@ const ProfileSheet = () => {
         <SheetDescription className="px-3 text-white xs:text-black ">
           <div className="flex items-center space-x-3 w-full">
             <Avatar size="lg">
-              <AvatarImage src="https://github.com/shadcn.png" />
+              <AvatarImage src="https://lh3.googleusercontent.com/a/ACg8ocL9Rnmlx4OZ-YoremGGwU698V0Bx1rAJWoeCnebSvAuQ1lRxpQ=s288-c-no" />
               <AvatarFallback>AR</AvatarFallback>
             </Avatar>
             <div className="max-w-[75%] overflow-hidden text-sm">

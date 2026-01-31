@@ -33,6 +33,7 @@ import {
   resolutionData,
   satisfactionData,
 } from "@/utils/kpi-charts-utils";
+import { OverviewKPIs } from "@/utils/overview-utils";
 
 const KpiCharts = () => {
   const chartConfig = {
@@ -62,67 +63,54 @@ const KpiCharts = () => {
     },
   };
 
-  // Calcul du taux de satisfaction moyen
-  const satisfactionRate =
-    satisfactionData.reduce((acc, item) => acc + item.score, 0) /
-    satisfactionData.length;
-
-  // Calcul du taux de résolution du dernier mois
-  const resolutionRate = resolutionData[resolutionData.length - 1].taux;
-
-  // Calcul du pourcentage d'adoption de l'IA (croissance)
-  const aiAdoptedPercentage = (() => {
-    const firstMonth = interventionTypeData[0].ia;
-    const lastMonth = interventionTypeData[interventionTypeData.length - 1].ia;
-    return (((lastMonth - firstMonth) / firstMonth) * 100).toFixed(1);
-  })();
-
   return (
     <div className="mt-3 lg:mt-5 pb-3">
       {/* Statistiques résumées */}
-      <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-5 2xl:max-w-400">
-        <Card className="shadow bg-blue-50 border-blue-200">
-          <CardHeader className="pb-2">
-            <CardDescription className="text-pulsai-primary">
-              Total Tickets
-            </CardDescription>
-            <CardTitle className="text-3xl text-pulsai-primary">645</CardTitle>
-          </CardHeader>
-        </Card>
-        <Card className="shadow bg-green-50 border-green-200">
-          <CardHeader className="pb-2">
-            <CardDescription className="text-green-600">
-              Taux Résolution
-            </CardDescription>
-            <CardTitle className="text-3xl text-green-700">
-              {resolutionRate.toFixed(1)}%
-            </CardTitle>
-          </CardHeader>
-        </Card>
-        <Card className="shadow bg-purple-50 border-purple-200">
-          <CardHeader className="pb-2">
-            <CardDescription className="text-purple-600">
-              IA Adoptée
-            </CardDescription>
-            <CardTitle className="text-3xl text-purple-700">
-              +{aiAdoptedPercentage}%
-            </CardTitle>
-          </CardHeader>
-        </Card>
-        <Card className="shadow bg-pink-50 border-pink-200">
-          <CardHeader className="pb-2">
-            <CardDescription className="text-pink-600">
-              Satisfaction
-            </CardDescription>
-            <CardTitle className="text-3xl text-pink-700">
-              {satisfactionRate.toFixed(1)}%
-            </CardTitle>
-          </CardHeader>
-        </Card>
+      <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6 mb-5 2xl:max-w-400">
+        {OverviewKPIs.map((kpi, index) => {
+          const colorClasses = {
+            "blue-600": "text-blue-600",
+            "green-700": "text-green-700",
+            "purple-700": "text-purple-700",
+            "pink-700": "text-pink-700",
+          };
+
+          const textColor =
+            colorClasses[kpi.className as keyof typeof colorClasses] ||
+            "text-gray-700";
+
+          return (
+            <Card
+              key={index}
+              className={`relative overflow-hidden w-full shadow font-mono p-5 ${kpi.bgClassName} ${kpi.borderClassName}`}
+            >
+              <div className="flex items-center space-x-2 -mt-1">
+                <kpi.icon className={`${textColor} w-5`} />
+                <span className={`font-extralight mt-1 ${textColor}`}>
+                  {kpi.label}
+                </span>
+              </div>
+              <div className={`font-bold text-4xl -mt-4 ${textColor}`}>
+                {kpi.prefix}
+                {typeof kpi.count === "number" && kpi.suffix === "%"
+                  ? kpi.count.toFixed(1)
+                  : kpi.count}
+                {kpi.suffix}
+              </div>
+              <kpi.icon
+                className={`absolute -bottom-4 -right-4 ${textColor} size-20 opacity-10`}
+              />
+              {kpi.description && (
+                <div className="text-xs -mt-4 truncate text-gray-600">
+                  {kpi.description}
+                </div>
+              )}
+            </Card>
+          );
+        })}
       </div>
 
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
-        
         {/* Area Chart - Interventions Humaine vs IA */}
         <Card className="shadow">
           <CardHeader>

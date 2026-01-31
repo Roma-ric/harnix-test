@@ -9,13 +9,12 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 import DesktopSideBar from "./desktop-sidebar";
 import { useState } from "react";
 
 const MobileSidebar = () => {
-
-  const [open, setOpen] = useState<boolean>(false);
+  const [open, setOpen] = useState(false);
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -36,7 +35,7 @@ const MobileSidebar = () => {
           <SheetTitle></SheetTitle>
         </SheetHeader>
         <SheetDescription className="px-3 pb-3 h-full">
-          <DesktopSideBar className="w-full!" setOpen={setOpen} />
+          <DesktopSideBar className="w-full!" onLinkClick={() => setOpen(false)} />
         </SheetDescription>
       </SheetContent>
     </Sheet>

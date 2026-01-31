@@ -3,11 +3,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useMemo, useState } from "react";
 import { chats, ChatType } from "@/utils/chats-utils";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { formatUnreadCount, getInitials, getTimeAgo } from "@/utils/utils";
+import { cn, formatUnreadCount, getInitials, getTimeAgo } from "@/utils/utils";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 
-const Chats = () => {
+const Chats = ({className}:{className?: string}) => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [activeTab, setActiveTab] = useState<"all" | "unread">("all");
 
@@ -36,7 +36,7 @@ const Chats = () => {
           <div className="max-w-full w-full overflow-hidden text-sm">
             <div className="flex w-full items-center space-x-2 justify-between">
               <div className="font-medium truncate">{chat.customer}</div>
-              <div className="text-xs min-w-10 truncate text-gray-500">
+              <div className="text-xs min-w-10 -mr-2 truncate text-gray-500">
                 {getTimeAgo(chat.lastMessageAt)}
               </div>
             </div>
@@ -59,7 +59,7 @@ const Chats = () => {
   };
 
   return (
-    <div className="relative min-h-full! max-h-full! w-90 border-r p-5 overflow-y-auto hide-scrollbar bg-white">
+    <div className={cn("relative min-h-full! max-h-full border-r p-5 pb-0 overflow-y-auto hide-scrollbar bg-white", className)}>
       <div className="flex items-center bg-pulsai-gray-light rounded-lg pl-3 outline-1 -outline-offset-1 has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2 has-[input:focus-within]:outline-pulsai-primary">
         <div className="shrink-0 text-base text-foreground select-none sm:text-sm/6">
           <Search className="text-gray-500 w-5" />
@@ -71,7 +71,7 @@ const Chats = () => {
           placeholder="Recherche..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="block min-w-0 grow rounded-r-lg py-2 pr-3 pl-2 text-base text-foreground placeholder:text-gray-500 focus:outline-none sm:text-sm/6"
+          className="block min-w-0 grow rounded-r-lg py-2 pr-3 pl-2 text-foreground placeholder:text-gray-500 focus:outline-none text-sm"
         />
       </div>
 
@@ -92,7 +92,7 @@ const Chats = () => {
             </TabsTrigger>
           ))}
         </TabsList>
-        <TabsContent value="all" className="divide-y overflow-y-auto">
+        <TabsContent value="all" className="divide-y overflow-y-auto hide-scrollbar">
           {filteredChats &&
             filteredChats.map((chat) => (
               <div key={chat.id}>
@@ -100,7 +100,7 @@ const Chats = () => {
               </div>
             ))}
         </TabsContent>
-        <TabsContent value="unread" className="divide-y overflow-y-auto">
+        <TabsContent value="unread" className="divide-y overflow-y-auto hide-scrollbar">
           {filteredChats &&
             filteredChats.map((chat) => (
               <div key={chat.id}>

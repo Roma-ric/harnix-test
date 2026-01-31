@@ -34,7 +34,7 @@ export default async function ChatsDetails({
   return (
     <div className="min-h-full! max-h-full! min-w-full! relative">
       <Card className="top-0 sticky z-30 shadow-none flex  flex-row! items-center justify-between space-x-5 border-t-0 border-x-0 border-b rounded-none p-5 py-0 bg-white">
-        <div className="max-w-full flex items-center cursor-pointer space-x-3 py-3.5 hover:bg-white">
+        <div className="flex items-center cursor-pointer space-x-3 py-3.5 hover:bg-white">
           <Avatar size="lg" className="border">
             <AvatarImage src="" />
             <AvatarFallback>{getInitials(chat?.customer)}</AvatarFallback>
@@ -50,6 +50,7 @@ export default async function ChatsDetails({
           <Link href={"/chats"} className="cursor-pointer">
             <Button
               variant={"secondary"}
+              title="Retour"
               className="rounded-full w-10 h-10 flex justify-center items-center border"
             >
               <Undo2 />
@@ -57,6 +58,7 @@ export default async function ChatsDetails({
           </Link>
           <Button
             variant={"secondary"}
+            title="Options"
             className="rounded-full cursor-pointer w-10 h-10 flex justify-center items-center border"
           >
             <EllipsisVertical />
@@ -78,7 +80,7 @@ export default async function ChatsDetails({
               if (message.sender === "customer") {
                 return (
                   <div key={message.id} className="w-full mb-4">
-                    <div className="max-w-[90%] xl:max-w-[85%] 2xl:max-w-2xl flex items-end space-x-3">
+                    <div className="max-w-full xs:max-w-[90%] xl:max-w-[85%] 2xl:max-w-2xl flex items-end space-x-3">
                       <Avatar size="lg" className="border z-10">
                         <AvatarImage src="" />
                         <AvatarFallback>
@@ -100,7 +102,7 @@ export default async function ChatsDetails({
                     key={message.id}
                     className="w-full flex justify-end mb-3"
                   >
-                    <div className="max-w-[90%] xl:max-w-[85%] 2xl:max-w-2xl flex items-end space-x-3">
+                    <div className="max-w-full xs:max-w-[90%] xl:max-w-[85%] 2xl:max-w-2xl flex items-end space-x-3">
                       <div
                         className={`flex-1 max-w-max rounded-t-lg ${message.sender === "ai" ? "bg-pulsai-primary/50 text-black" : "bg-pulsai-gray-dark text-white"} wrap-break-word  p-3`}
                       >
@@ -137,7 +139,7 @@ export default async function ChatsDetails({
           id="price"
           name="price"
           placeholder="Envoyer un message..."
-          className="block resize-none min-w-0 grow rounded-r-lg py-2 pr-3 pl-2 text-base text-foreground placeholder:text-gray-500 focus:outline-none sm:text-sm/6"
+          className="block resize-none min-w-0 grow rounded-r-lg py-2 pr-3 pl-2 text-foreground placeholder:text-gray-500 focus:outline-none text-sm/6"
         />
         <div className="grid shrink-0 grid-cols-1 py-1.5 pr-3 pl-3 focus-within:relative">
         <Button className="cursor-pointer">

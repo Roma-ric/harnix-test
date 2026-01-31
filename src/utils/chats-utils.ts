@@ -1000,7 +1000,7 @@ export const chats: ChatType[] = [
     customer: "Nicolas Girard",
     isOnline: true,
     nbUnreadMessage: 4,
-    lastMessageText: "C'est urgent, j'ai besoin de mes données maintenant",
+    lastMessageText: "C'est urgent, j'ai besoin de mes données maintenant j'ai besoin de mes données maintenant ",
     lastMessageType: "text",
     lastMessageAt: "2026-01-30T17:15:30Z",
     messages: [

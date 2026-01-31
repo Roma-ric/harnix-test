@@ -1,6 +1,6 @@
 "use client";
 
-import KpiCharts from "@/components/domain/kpi-charts";
+import KpiCharts from "@/components/domain/overview/kpi-charts";
 
 export default function Overview() {
   return (

@@ -1,21 +1,62 @@
 import { Search } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useMemo, useState } from "react";
-import { chats } from "@/utils/chats-utils";
+import { chats, ChatType } from "@/utils/chats-utils";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { getInitials, getTimeAgo } from "@/utils/utils";
+import { formatUnreadCount, getInitials, getTimeAgo } from "@/utils/utils";
 import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
 
 const Chats = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
+  const [activeTab, setActiveTab] = useState<"all" | "unread">("all");
 
   const filteredChats = useMemo(() => {
-    if (!searchTerm.trim()) return chats;
-
-    return chats.filter((chat) =>
-      chat.customer.toLowerCase().includes(searchTerm.toLowerCase()),
+    const matchesSearch = chats.filter((chat) =>
+      chat.customer.toLowerCase().includes(searchTerm.trim().toLowerCase()),
     );
-  }, [searchTerm, chats]);
+
+    if (activeTab === "unread") {
+      return matchesSearch.filter((chat) => chat.nbUnreadMessage > 0);
+    }
+
+    if (activeTab === "all") {
+      return matchesSearch;
+    }
+  }, [searchTerm, activeTab]);
+
+  const ChatRender = ({ chat }: { chat: ChatType }) => {
+    return (
+      <Link href={`/chats/${chat.id}`}>
+        <div className="flex items-center cursor-pointer space-x-3 w-full py-4 hover:bg-white">
+          <Avatar size="lg" className="border">
+            <AvatarImage src="" />
+            <AvatarFallback>{getInitials(chat.customer)}</AvatarFallback>
+          </Avatar>
+          <div className="max-w-full w-full overflow-hidden text-sm">
+            <div className="flex w-full items-center space-x-2 justify-between">
+              <div className="font-medium truncate">{chat.customer}</div>
+              <div className="text-xs min-w-10 truncate text-gray-500">
+                {getTimeAgo(chat.lastMessageAt)}
+              </div>
+            </div>
+            <div className="flex w-full items-center space-x-2 justify-between">
+              <div className="truncate text-gray-500 text-xs">
+                {chat.lastMessageText}
+              </div>
+              {chat.nbUnreadMessage > 0 && (
+                <Badge className="flex bg-pulsai-secondary text-black w-5 h-5 items-center justify-center">
+                  <span className="mt-0.5">
+                    {formatUnreadCount(chat.nbUnreadMessage)}
+                  </span>
+                </Badge>
+              )}
+            </div>
+          </div>
+        </div>
+      </Link>
+    );
+  };
 
   return (
     <div className="relative min-h-full! max-h-full! w-90 border-r p-5 overflow-y-auto hide-scrollbar bg-white">
@@ -36,13 +77,15 @@ const Chats = () => {
 
       <Tabs
         defaultValue="all"
+        value={activeTab}
+        onValueChange={(value) => setActiveTab(value as "all" | "unread")}
         className="w-full mt-5 space-y-4 flex-1 overflow-y-auto"
       >
         <TabsList className="overflow-x-auto w-full h-10! hide-scrollbar border">
-          {["Toutes", "Non lues", "En attente"].map((label, i) => (
+          {["Toutes", "Non lues"].map((label, i) => (
             <TabsTrigger
               key={i}
-              value={["all", "unread", "pending"][i]}
+              value={["all", "unread"][i]}
               className="text-xs data-[state=active]:font-semibold rounded!"
             >
               {label}
@@ -50,36 +93,21 @@ const Chats = () => {
           ))}
         </TabsList>
         <TabsContent value="all" className="divide-y overflow-y-auto">
-          {filteredChats.map((chat) => (
-            <div key={chat.id}>
-              <Link href={`/chats/${chat.id}`}>
-                <div className="flex items-center cursor-pointer space-x-3 w-full py-4 hover:bg-white">
-                  <Avatar size="lg" className="border">
-                    <AvatarImage src="" />
-                    <AvatarFallback>
-                      {getInitials(chat.customer)}
-                    </AvatarFallback>
-                  </Avatar>
-                  <div className="max-w-full w-full overflow-hidden text-sm">
-                    <div className="flex w-full items-center space-x-2 justify-between">
-                      <div className="font-medium truncate">
-                        {chat.customer}
-                      </div>
-                      <div className="text-xs min-w-10 truncate text-gray-500">
-                        {getTimeAgo(chat.lastMessageAt)}
-                      </div>
-                    </div>
-                    <div className="truncate text-gray-500 text-xs">
-                      {chat.lastMessageText}
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            </div>
-          ))}
+          {filteredChats &&
+            filteredChats.map((chat) => (
+              <div key={chat.id}>
+                <ChatRender chat={chat} />
+              </div>
+            ))}
         </TabsContent>
-        <TabsContent value="unread"></TabsContent>
-        <TabsContent value="pending"></TabsContent>
+        <TabsContent value="unread" className="divide-y overflow-y-auto">
+          {filteredChats &&
+            filteredChats.map((chat) => (
+              <div key={chat.id}>
+                <ChatRender chat={chat} />
+              </div>
+            ))}
+        </TabsContent>
       </Tabs>
     </div>
   );

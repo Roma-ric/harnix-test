@@ -1,4 +1,6 @@
-// Données pour les interventions par type (Humaine vs IA)
+/**
+ * Données pour les interventions par type (Humaine vs IA)
+ */
 export const interventionTypeData = [
   { type: "Jan", humaine: 145, ia: 89 },
   { type: "Fév", humaine: 132, ia: 112 },
@@ -8,7 +10,9 @@ export const interventionTypeData = [
   { type: "Jun", humaine: 87, ia: 234 },
 ];
 
-// Données pour les tickets par mois
+/**
+ * Données pour les tickets par mois
+ */
 export const ticketsData = [
   { mois: "Jan", total: 234, resolus: 198, enCours: 36 },
   { mois: "Fév", total: 244, resolus: 215, enCours: 29 },
@@ -18,7 +22,9 @@ export const ticketsData = [
   { mois: "Jun", total: 321, resolus: 298, enCours: 23 },
 ];
 
-// Données pour le taux de résolution
+/**
+ * Données pour le taux de résolution
+ */
 export const resolutionData = [
   { mois: "Jan", taux: 84.6 },
   { mois: "Fév", taux: 88.1 },
@@ -28,7 +34,9 @@ export const resolutionData = [
   { mois: "Jun", taux: 92.8 },
 ];
 
-// Données pour la satisfaction client
+/**
+ * Données pour la satisfaction client
+ */
 export const satisfactionData = [
   { category: "Rapidité", score: 92 },
   { category: "Qualité", score: 70 },

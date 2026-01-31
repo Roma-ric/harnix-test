@@ -10,7 +10,7 @@ interface ChatMessage {
   createdAt: string;
 }
 
-interface ChatType {
+export interface ChatType {
   id: string;
   customer: string;
   isOnline: boolean;
@@ -21,6 +21,9 @@ interface ChatType {
   messages: ChatMessage[];
 }
 
+/**
+ * Données pour les conversations
+ */
 export const chats: ChatType[] = [
   {
     id: "chat_001",

@@ -51,6 +51,7 @@ export default async function ChatsDetails({
     <>
       {chat ? (
         <div className="min-h-full! max-h-full! min-w-full! relative">
+          {/* Chat Header */}
           <Card className="top-0 sticky z-30 shadow-none flex  flex-row! items-center justify-between space-x-5 border-t-0 border-x-0 border-b rounded-none p-5 py-0 bg-white">
             <div className="flex items-center cursor-pointer space-x-3 py-3.5 hover:bg-white">
               <Avatar size="lg" className="border">
@@ -78,7 +79,9 @@ export default async function ChatsDetails({
               
             </div>
           </Card>
-          <div className="flex flex-col text-sm space-y-5 p-5 pb-70 overflow-y-auto hide-scrollbar h-[calc(100vh-80px)]">
+          
+          {/* Chat Body */}
+          <div className="flex flex-col text-sm space-y-5 p-5 pb-70 overflow-y-auto scrollbar-lock-hide h-[calc(100vh-80px)]">
             {Object.entries(messagesByDate).map(([date, messages]) => (
               <div key={date}>
                 {/* Séparateur de date */}
@@ -94,7 +97,7 @@ export default async function ChatsDetails({
                     return (
                       // Messages du client
                       <div key={message.id} className="w-full mb-4">
-                        <div className="max-w-full cursor-context-menu xs:max-w-[90%] xl:max-w-[85%] 2xl:max-w-2xl flex items-end space-x-3">
+                        <div className="max-w-full xs:max-w-[90%] xl:max-w-[85%] 2xl:max-w-2xl flex items-end space-x-3">
                           <Avatar size="lg" className="border z-10">
                             <AvatarImage src="" />
                             <AvatarFallback>
@@ -157,9 +160,11 @@ export default async function ChatsDetails({
               </div>
             ))}
           </div>
+
+          {/* Chat Footer */}
           <Card className="absolute bottom-0 w-full z-50 border-0 border-t px-5 py-3 shadow-none rounded-none">
             <div className="flex items-center bg-pulsai-gray-light rounded-lg pl-3 outline-1 -outline-offset-1 has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2 has-[input:focus-within]:outline-pulsai-primary">
-              <div className="shrink-0 cursor-pointer p-1 rounded border text-base text-pulsai-primary select-none sm:text-sm/6">
+              <div className="shrink-0 cursor-pointer p-1 rounded text-base text-pulsai-primary hover:text-pulsai-primary/90 select-none sm:text-sm/6">
                 <Paperclip className="" />
               </div>
               <textarea
@@ -177,6 +182,7 @@ export default async function ChatsDetails({
           </Card>
         </div>
       ) : (
+        // Chat don't exist
         <div className="flex mx-auto min-h-full! justify-center items-center">
           <div className="flex flex-col text-gray-500 justify-center items-center">
             <MessageCircleX className="size-20 stroke-1" />

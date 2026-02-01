@@ -39,7 +39,7 @@ export default function RootLayout({
           <DesktopSideBar className="hidden xl:flex" />
           <Card className="h-full overflow-hidden rounded sm:rounded-4xl xl:ml-5 w-full px-5 xs:px-7 lg:px-10 pt-2 lg:pt-5 pb-5 flex flex-col justify-between">
             <Header />
-            <div className="flex-1 overflow-y-auto hide-scrollbar">
+            <div className="flex-1 -mt-5 overflow-y-auto scrollbar-lock-hide">
               {children}
             </div>
           </Card>

@@ -1,16 +1,13 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { Badge } from "@/components/ui/badge";
-import Link from "next/link";
-import { Input } from "@/components/ui/input";
+import { Campaign } from "@/types/campaigns.types";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+  campaignsData,
+  mapCampaignChannel,
+  mapCampaignStatus,
+} from "@/utils/campaigns-utils";
+
 import {
   ColumnFiltersState,
   flexRender,
@@ -19,6 +16,8 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { useState } from "react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,
@@ -28,15 +27,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import {
-  getSlaRemaining,
-  getSlaStatus,
-  mapPriority,
-  mapStatus,
-  Ticket,
-  ticketsData,
-} from "@/utils/tickets-utils";
-import { Button } from "@/components/ui/button";
-import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
@@ -44,109 +34,86 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { MoreHorizontal } from "lucide-react";
 
-const ticketColumns: ColumnDef<Ticket>[] = [
+const campaignColumns: ColumnDef<Campaign>[] = [
   {
-    accessorKey: "id",
-    header: "ID",
-  },
-  {
-    accessorKey: "customer",
-    header: "Client",
-    filterFn: "includesString",
-  },
-  {
-    accessorKey: "subject",
-    header: "Sujet",
-    cell: ({ row }) => (
-      <Link
-        href={`/chats/${row.original.conversationId}`}
-        className="underline text-primary"
-      >
-        {row.original.subject}
-      </Link>
-    ),
-  },
-  {
-    accessorKey: "priority",
-    header: "Priorité",
-    cell: ({ row }) => {
-      const { label, color } = mapPriority(row.original.priority);
-      return <Badge className={color}>{label}</Badge>;
-    },
-    filterFn: (row, id, value) => {
-      if (!value) return true;
-      return row.getValue(id) === value;
-    },
+    accessorKey: "name",
+    header: "Campagne",
   },
   {
     accessorKey: "status",
     header: "Statut",
     cell: ({ row }) => {
-      const { label, color } = mapStatus(row.original.status);
+      const { label, color } = mapCampaignStatus(row.original.status);
       return <Badge className={color}>{label}</Badge>;
     },
-    filterFn: (row, id, value) => {
-      if (!value) return true;
-      return row.getValue(id) === value;
-    },
+    filterFn: (row, id, value) => (!value ? true : row.getValue(id) === value),
   },
   {
-    accessorKey: "assignedTo",
-    header: "Assigné à",
-  },
-  {
-    accessorKey: "slaHours",
-    header: "SLA",
+    accessorKey: "channel",
+    header: "Canal",
     cell: ({ row }) => {
-      const remainingMs = getSlaRemaining(
-        row.original.createdAt,
-        row.original.slaHours,
-      );
+      const { label, color } = mapCampaignChannel(row.original.channel);
+      return <Badge className={color}>{label}</Badge>;
+    },
+    filterFn: (row, id, value) => (!value ? true : row.getValue(id) === value),
+  },
+  {
+    id: "trigger",
+    header: "Ciblage",
+    accessorFn: (row) => row.segment.trigger,
+    cell: ({ row }) => (
+      <span className="text-sm text-muted-foreground">
+        {row.original.segment.description}
+      </span>
+    ),
+    filterFn: (row, id, value) => (!value ? true : row.getValue(id) === value),
+  },
+  {
+    id: "performance",
+    header: "Performance",
+    cell: ({ row }) => {
+      const metrics = row.original.metrics;
 
-      const { label, color } = getSlaStatus(remainingMs);
+      if (!metrics) return <span className="text-muted-foreground">—</span>;
 
       return (
-        <Badge className={color} title="Temps restant avant dépassement SLA">
-          {label}
-        </Badge>
+        <div className="text-sm">
+          <p>Open: {metrics.openRate}%</p>
+          <p>CTR: {metrics.ctr}%</p>
+        </div>
       );
-    },
-  },
-  {
-    accessorKey: "createdBy",
-    header: "Créé par",
-    filterFn: (row, id, value) => {
-      if (!value) return true;
-      return row.getValue(id) === value;
-    },
-    cell: ({ row }) => {
-      const createdBy = row.original.createdBy === "ai" ? "IA" : "Agent";
-
-      return <p className="text-center"> {createdBy} </p>;
     },
   },
   {
     id: "actions",
     cell: ({ row }) => {
-      const ticket = row.original;
+      const campaign = row.original;
 
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="secondary" className="h-8 w-8 p-0 border">
-              <span className="sr-only">Open menu</span>
               <MoreHorizontal className="h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <Link href={`/chats/${ticket.conversationId}`}>
-              <DropdownMenuItem>Voir la conversation</DropdownMenuItem>
-            </Link>
+            <DropdownMenuItem>Éditer</DropdownMenuItem>
+            <DropdownMenuItem>
+              {campaign.status === "active" ? "Mettre en pause" : "Activer"}
+            </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Modifier le ticket</DropdownMenuItem>
+            <DropdownMenuItem>Dupliquer</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );
@@ -154,15 +121,13 @@ const ticketColumns: ColumnDef<Ticket>[] = [
   },
 ];
 
-export default function TicketsTable() {
+export default function CampaignsTable() {
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
   const table = useReactTable({
-    data: ticketsData,
-    columns: ticketColumns,
-    state: {
-      columnFilters,
-    },
+    data: campaignsData,
+    columns: campaignColumns,
+    state: { columnFilters },
     onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
@@ -171,18 +136,18 @@ export default function TicketsTable() {
   return (
     <div className="space-y-4 mb-5">
       {/* Filtre */}
-      <div className="flex gap-3">
+      <div className="flex flex-wrap gap-3 mb-4">
+        {/* Recherche par nom */}
         <Input
-          placeholder="Filtrer par client..."
-          value={
-            (table.getColumn("customer")?.getFilterValue() as string) ?? ""
-          }
+          placeholder="Rechercher une campagne..."
+          value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
           onChange={(e) =>
-            table.getColumn("customer")?.setFilterValue(e.target.value)
+            table.getColumn("name")?.setFilterValue(e.target.value)
           }
           className="max-w-sm"
         />
 
+        {/* Filtre statut */}
         <Select
           onValueChange={(value) =>
             table
@@ -195,50 +160,54 @@ export default function TicketsTable() {
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="all">Tous</SelectItem>
-            <SelectItem value="open">Ouvert</SelectItem>
-            <SelectItem value="pending">En attente</SelectItem>
-            <SelectItem value="resolved">Résolu</SelectItem>
+            <SelectItem value="draft">Brouillon</SelectItem>
+            <SelectItem value="active">Active</SelectItem>
+            <SelectItem value="paused">En pause</SelectItem>
           </SelectContent>
         </Select>
 
+        {/* Filtre canal */}
         <Select
           onValueChange={(value) =>
             table
-              .getColumn("priority")
+              .getColumn("channel")
               ?.setFilterValue(value === "all" ? undefined : value)
           }
         >
           <SelectTrigger className="w-40">
-            <SelectValue placeholder="Priorité" />
+            <SelectValue placeholder="Canal" />
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="all">Tous</SelectItem>
-            <SelectItem value="low">Basse</SelectItem>
-            <SelectItem value="medium">Moyenne</SelectItem>
-            <SelectItem value="high">Haute</SelectItem>
+            <SelectItem value="email">Email</SelectItem>
+            <SelectItem value="chat">Chat</SelectItem>
+            <SelectItem value="whatsapp">WhatsApp</SelectItem>
           </SelectContent>
         </Select>
 
+        {/* Filtre trigger */}
         <Select
           onValueChange={(value) =>
             table
-              .getColumn("createdBy")
+              .getColumn("trigger")
               ?.setFilterValue(value === "all" ? undefined : value)
           }
         >
-          <SelectTrigger className="w-48">
-            <SelectValue placeholder="Créé par" />
+          <SelectTrigger className="w-56">
+            <SelectValue placeholder="Type de campagne" />
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="all">Tous</SelectItem>
-            <SelectItem value="ai">IA</SelectItem>
-            <SelectItem value="human">Humain</SelectItem>
+            <SelectItem value="inactive_users">Inactivité</SelectItem>
+            <SelectItem value="ticket_resolved">Ticket résolu</SelectItem>
+            <SelectItem value="onboarding">Onboarding</SelectItem>
+            <SelectItem value="incident_alert">Incident / SLA</SelectItem>
           </SelectContent>
         </Select>
       </div>
 
       {/* Table */}
-      <div className="border rounded-lg! max-w-full! overflow-y-auto scrollbar-lock-hide">
+      <div className="border rounded-lg overflow-hidden">
         <Table>
           <TableHeader className="bg-pulsai-gray-dark/10">
             {table.getHeaderGroups().map((group) => (
@@ -260,7 +229,7 @@ export default function TicketsTable() {
               table.getRowModel().rows.map((row) => (
                 <TableRow key={row.id}>
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id} className="px-5 py-4">
+                    <TableCell key={cell.id} className="px-5">
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext(),
@@ -272,10 +241,10 @@ export default function TicketsTable() {
             ) : (
               <TableRow>
                 <TableCell
-                  colSpan={ticketColumns.length}
-                  className="text-center min-h-full!"
+                  colSpan={campaignColumns.length}
+                  className="text-center"
                 >
-                  Aucun ticket trouvé
+                  Aucune campagne
                 </TableCell>
               </TableRow>
             )}

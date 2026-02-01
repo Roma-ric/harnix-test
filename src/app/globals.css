@@ -169,14 +169,45 @@
   }
 }
 
-.hide-scrollbar {
-  -ms-overflow-style: none;
-  /* IE et Edge */
-  scrollbar-width: none;
-  /* Firefox */
+/* Cacher la scrollbar par défaut */
+.scrollbar-hide {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
 }
 
-.hide-scrollbar::-webkit-scrollbar {
-  display: none;
-  /* Chrome, Safari et Opera */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.scrollbar-lock-hide {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.scrollbar-lock-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Afficher la scrollbar au survol */
+.scrollbar-hide:hover {
+  scrollbar-width: thin; /* Firefox */
+  -ms-overflow-style: auto; /* IE and Edge */
+}
+
+.scrollbar-hide:hover::-webkit-scrollbar {
+  display: block;
+  width: 8px;
+}
+
+.scrollbar-hide:hover::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-hide:hover::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.scrollbar-hide:hover::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

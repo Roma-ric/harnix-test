@@ -7,6 +7,7 @@ import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import { ArrowRight, Siren } from "lucide-react";
 import { cn } from "@/utils/utils";
+import PulsAILogo from "../pulsai-logo";
 
 const DesktopSideBar = ({
   className,
@@ -26,7 +27,10 @@ const DesktopSideBar = ({
     }
   };
 
-  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleLinkClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
     if (onLinkClick) {
       e.preventDefault();
       onLinkClick();
@@ -51,17 +55,14 @@ const DesktopSideBar = ({
         className,
       )}
     >
-      {/* Logo */}
-      <Link href={"/"} onClick={(e) => handleLinkClick(e, "/")}>
-        <div className="border-b border-pulsai-gray-light/5 pb-4 cursor-pointer">
-          <h1 className="font-heading text-xl">
-            <span className="text-pulsai-primary">Puls</span>
-            <span className="text-pulsai-secondary">AI</span>
-          </h1>
-        </div>
-      </Link>
+      {/* PulsAILogo */}
+      <div className="border-b border-pulsai-gray-light/5 pb-4 cursor-pointer">
+        <Link href={"/"} onClick={(e) => handleLinkClick(e, "/")}>
+          <PulsAILogo />{" "}
+        </Link>
+      </div>
 
-      <div className="flex flex-col overflow-y-auto hide-scrollbar justify-between flex-1 w-full space-y-1 text-white">
+      <div className="flex flex-col overflow-y-auto scrollbar-hide justify-between flex-1 w-full space-y-5 text-white">
         {/* Menu */}
         <div className="flex flex-col text-sm space-y-5">
           {DesktopSideBarItems.map((item) => (
@@ -69,8 +70,8 @@ const DesktopSideBar = ({
               <h2 className="uppercase px-2 mb-2"> {item.label} </h2>
               <div className="flex flex-col space-y-1">
                 {item.children.map((children, index) => (
-                  <Link 
-                    href={children.href} 
+                  <Link
+                    href={children.href}
                     key={`${children.href}-${index}`}
                     onClick={(e) => handleLinkClick(e, children.href)}
                   >
@@ -97,7 +98,6 @@ const DesktopSideBar = ({
               <kpiAlert.icon className={`text-${kpiAlert.className} w-5`} />
               <span className="font-extralight mt-2"> {kpiAlert.label} </span>
             </div>
-            <div className="font-bold text-4xl -mt-4">{kpiAlert.count}</div>
             <kpiAlert.icon
               className={`absolute -bottom-4 -right-4 text-${kpiAlert.className} size-20 opacity-10`}
             />

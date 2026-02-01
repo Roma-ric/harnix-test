@@ -59,7 +59,7 @@ const Chats = ({className}:{className?: string}) => {
   };
 
   return (
-    <div className={cn("relative min-h-full! max-h-full border-r p-5 pb-0 overflow-y-auto hide-scrollbar bg-white", className)}>
+    <div className={cn("relative min-h-full! max-h-full border-r p-5 pb-0 overflow-y-auto scrollbar-lock-hide bg-white", className)}>
       <div className="flex items-center bg-pulsai-gray-light rounded-lg pl-3 outline-1 -outline-offset-1 has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2 has-[input:focus-within]:outline-pulsai-primary">
         <div className="shrink-0 text-base text-foreground select-none sm:text-sm/6">
           <Search className="text-gray-500 w-5" />
@@ -81,7 +81,7 @@ const Chats = ({className}:{className?: string}) => {
         onValueChange={(value) => setActiveTab(value as "all" | "unread")}
         className="w-full mt-5 space-y-4 flex-1 overflow-y-auto"
       >
-        <TabsList className="overflow-x-auto w-full h-10! hide-scrollbar border">
+        <TabsList className="overflow-x-auto w-full h-10! scrollbar-lock-hide border">
           {["Toutes", "Non lues"].map((label, i) => (
             <TabsTrigger
               key={i}
@@ -92,7 +92,7 @@ const Chats = ({className}:{className?: string}) => {
             </TabsTrigger>
           ))}
         </TabsList>
-        <TabsContent value="all" className="divide-y overflow-y-auto hide-scrollbar">
+        <TabsContent value="all" className="divide-y overflow-y-auto scrollbar-hide">
           {filteredChats &&
             filteredChats.map((chat) => (
               <div key={chat.id}>
@@ -100,7 +100,7 @@ const Chats = ({className}:{className?: string}) => {
               </div>
             ))}
         </TabsContent>
-        <TabsContent value="unread" className="divide-y overflow-y-auto hide-scrollbar">
+        <TabsContent value="unread" className="divide-y overflow-y-auto scrollbar-hide">
           {filteredChats &&
             filteredChats.map((chat) => (
               <div key={chat.id}>

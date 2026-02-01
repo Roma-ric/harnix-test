@@ -8,6 +8,7 @@ import MobileSidebar from "./mobile-sidebar";
 import { usePathname } from "next/navigation";
 import { cn } from "@/utils/utils";
 import Link from "next/link";
+import PulsAILogo from "../pulsai-logo";
 
 const Header = () => {
   const pathname = usePathname();
@@ -58,11 +59,10 @@ const Header = () => {
       <div className="border-b xl:hidden flex items-center space-x-2 border-pulsai-gray-light/5 pb-4 pt-6">
         {/* Mobile Ménu */}
         <MobileSidebar />
+
+        {/* Logo */}
         <Link href={"/"}>
-          <h1 className="font-heading text-xl">
-            <span className="text-pulsai-primary">Puls</span>
-            <span className="text-pulsai-secondary">AI</span>
-          </h1>
+          <PulsAILogo />
         </Link>
       </div>
 

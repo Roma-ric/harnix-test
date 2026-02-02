@@ -1,8 +1,8 @@
 "use client";
 
-import Chats from "@/components/domain/chats/chats";
+import SettingsMenu from "@/components/domain/settings/settings-menu";
 
-export default function ChatsLayout({
+export default function SettingsLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -14,7 +14,7 @@ export default function ChatsLayout({
         height: "calc(100vh - 140px)",
       }}
     >
-      <Chats className="hidden lg:flex lg:flex-col w-90!"/>
+      <SettingsMenu className="w-90!"/>
       <div className="flex-1 h-full">{children}</div>
     </div>
   );

@@ -1,13 +1,9 @@
 import {
   Bot,
   CheckCircle,
-  Heart,
   LucideIcon,
-  MessagesSquare,
-  Siren,
   Smile,
   Ticket,
-  UserStar,
 } from "lucide-react";
 import {
   interventionTypeData,

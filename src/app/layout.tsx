@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card";
 import DesktopSideBar from "@/components/domain/layout/desktop-sidebar";
 import Header from "@/components/domain/layout/header";
 import { Button } from "@/components/ui/button";
-import { MonitorSmartphone, Plus } from "lucide-react";
+import { Plus } from "lucide-react";
 import MobileRestriction from "@/components/domain/mobile-restriction";
 
 // Polices PulsAI
@@ -35,9 +35,9 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body className={`${unbounded.variable} ${ubuntu.variable}`}>
-        <div className="hidden sm:flex relative h-screen max-h-screen justify-between font-mono p-2 sm:p-5 bg-pulsai-gray-dark">
+        <div className="hidden sm:flex relative h-screen max-h-screen justify-between font-mono p-2.5 bg-pulsai-gray-dark">
           <DesktopSideBar className="hidden xl:flex" />
-          <Card className="h-full overflow-hidden rounded sm:rounded-4xl xl:ml-5 w-full px-5 xs:px-7 lg:px-10 pt-2 lg:pt-5 pb-5 flex flex-col justify-between">
+          <Card className="h-full overflow-hidden rounded sm:rounded-4xl xl:ml-5 w-full px-5 xs:px-7 pt-2 lg:pt-5 pb-5 flex flex-col justify-between">
             <Header />
             <div className="flex-1 -mt-5 overflow-y-auto scrollbar-lock-hide">
               {children}

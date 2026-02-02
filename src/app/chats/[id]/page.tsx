@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { chats, ChatType } from "@/utils/chats-utils";
+import { chats } from "@/utils/chats-utils";
 import { formatDateTime, getInitials } from "@/utils/utils";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/context-menu";
 import Link from "next/link";
 import ChatOptions from "@/components/domain/chats/chat-options";
+import { ChatType } from "@/types/chats.types";
 
 export default async function ChatsDetails({
   params,
@@ -85,7 +86,7 @@ export default async function ChatsDetails({
             {Object.entries(messagesByDate).map(([date, messages]) => (
               <div key={date}>
                 {/* Séparateur de date */}
-                <div className="sticky top-0 flex items-center justify-center my-4">
+                <div className="sticky top-0 flex items-center justify-center mb-4 mt-0">
                   <div className="bg-gray-200 text-gray-600 text-xs px-3 py-1 rounded-full">
                     {date}
                   </div>

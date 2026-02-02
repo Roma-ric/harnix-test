@@ -1,15 +1,20 @@
+"use client"
+
 import { Search } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useMemo, useState } from "react";
-import { chats, ChatType } from "@/utils/chats-utils";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { cn, formatUnreadCount, getInitials, getTimeAgo } from "@/utils/utils";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
+import { chats } from "@/utils/chats-utils";
+import { ChatType } from "@/types/chats.types";
+import { usePathname } from "next/navigation";
 
 const Chats = ({className}:{className?: string}) => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [activeTab, setActiveTab] = useState<"all" | "unread">("all");
+  const pathname = usePathname();
 
   const filteredChats = useMemo(() => {
     const matchesSearch = chats.filter((chat) =>
@@ -25,10 +30,12 @@ const Chats = ({className}:{className?: string}) => {
     }
   }, [searchTerm, activeTab]);
 
+  const activeChat = pathname.split('/chats/')[1];
+
   const ChatRender = ({ chat }: { chat: ChatType }) => {
     return (
       <Link href={`/chats/${chat.id}`}>
-        <div className="flex items-center cursor-pointer space-x-3 w-full py-4 hover:bg-white">
+        <div className={cn(`flex items-center cursor-pointer space-x-3 w-full py-4 `, activeChat === chat.id ? "border-y border-y-pulsai-gray-dark" : "")}>
           <Avatar size="lg" className="border">
             <AvatarImage src="" />
             <AvatarFallback>{getInitials(chat.customer)}</AvatarFallback>

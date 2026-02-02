@@ -9,19 +9,27 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Building2, LogOut } from "lucide-react";
 
 const ProfileSheet = () => {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Avatar className="w-12 h-12 cursor-pointer">
+        <Avatar className=" sm:w-12 sm:h-12  w-10 h-10 cursor-pointer">
           <AvatarImage src="https://lh3.googleusercontent.com/a/ACg8ocL9Rnmlx4OZ-YoremGGwU698V0Bx1rAJWoeCnebSvAuQ1lRxpQ=s288-c-no" />
           <AvatarFallback>AR</AvatarFallback>
         </Avatar>
       </SheetTrigger>
       <SheetContent className="w-full! xs:max-w-sm bg-pulsai-gray-dark text-white xs:text-black border-none xs:border xs:bg-white">
         <SheetHeader className="border-b">
+          {/* User Info */}
           <div className="flex items-center space-x-3 w-full">
             <Avatar size="lg">
               <AvatarImage src="https://lh3.googleusercontent.com/a/ACg8ocL9Rnmlx4OZ-YoremGGwU698V0Bx1rAJWoeCnebSvAuQ1lRxpQ=s288-c-no" />
@@ -33,18 +41,22 @@ const ProfileSheet = () => {
             </div>
           </div>
         </SheetHeader>
-        <SheetDescription className="px-3 text-white xs:text-black ">
+        <div className="px-3 text-white xs:text-black ">
           <SheetTitle className="flex items-center space-x-2 text-white xs:text-black!">
-            <Building2 className="text-pulsai-primary" />{" "}
-            <span>Geek House Org</span>
+            {/* Entreprise / Organisation */}
+            <Select defaultValue="geek-house">
+              <SelectTrigger className="w-full">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="geek-house">
+                  <Building2 className="text-pulsai-primary" />{" "}
+                  <span>Geek House Org</span>
+                </SelectItem>
+              </SelectContent>
+            </Select>
           </SheetTitle>
-          <SheetDescription className="text-white xs:text-black mt-2">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque
-            enim nemo distinctio esse officia pariatur reiciendis eaque
-            dignissimos provident soluta reprehenderit totam facilis
-            necessitatibus corrupti quo, dolore dicta illum accusamus.
-          </SheetDescription>
-        </SheetDescription>
+        </div>
         <SheetFooter>
           <Button variant={"secondary"} className="border w-full text-red-500">
             <LogOut /> Se déconnecter

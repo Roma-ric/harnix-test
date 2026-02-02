@@ -32,9 +32,9 @@ import {
   getSlaStatus,
   mapPriority,
   mapStatus,
-  Ticket,
   ticketsData,
 } from "@/utils/tickets-utils";
+import { Ticket } from "@/types/tickets.types";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -93,10 +93,6 @@ const ticketColumns: ColumnDef<Ticket>[] = [
     },
   },
   {
-    accessorKey: "assignedTo",
-    header: "Assigné à",
-  },
-  {
     accessorKey: "slaHours",
     header: "SLA",
     cell: ({ row }) => {
@@ -122,7 +118,7 @@ const ticketColumns: ColumnDef<Ticket>[] = [
       return row.getValue(id) === value;
     },
     cell: ({ row }) => {
-      const createdBy = row.original.createdBy === "ai" ? "IA" : "Agent";
+      const createdBy = row.original.createdBy === "ai" ? "IA" : "Vous";
 
       return <p className="text-center"> {createdBy} </p>;
     },
@@ -171,7 +167,7 @@ export default function TicketsTable() {
   return (
     <div className="space-y-4 mb-5">
       {/* Filtre */}
-      <div className="flex gap-3">
+      <div className="flex overflow-x-auto scrollbar-lock-hide gap-3 mb-4">
         <Input
           placeholder="Filtrer par client..."
           value={
@@ -180,7 +176,7 @@ export default function TicketsTable() {
           onChange={(e) =>
             table.getColumn("customer")?.setFilterValue(e.target.value)
           }
-          className="max-w-sm"
+          className="min-w-60 w-sm"
         />
 
         <Select

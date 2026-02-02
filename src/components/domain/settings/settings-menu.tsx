@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { SettingsNavigationMenu } from "@/utils/settings-utils";
-import { cn } from "@/utils/utils";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 

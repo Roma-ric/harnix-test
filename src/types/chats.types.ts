@@ -1,5 +1,5 @@
 type MessageType = "image" | "video" | "doc" | "text";
-type MessageSender = "customer" | "agent" | "ai";
+type MessageSender = "customer" | "user" | "ai";
 
 interface ChatMessage {
   id: string;

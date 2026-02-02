@@ -10,7 +10,7 @@ const Notifications = () => {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button variant={"secondary"} className="border rounded-full w-12 h-12">
+        <Button variant={"secondary"} className="border rounded-full  sm:w-12 sm:h-12  w-10 h-10">
           <Bell className="size-5 strok" />
         </Button>
       </PopoverTrigger>

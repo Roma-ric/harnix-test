@@ -8,9 +8,8 @@ export const ticketsData: Ticket[] = [
     subject: "Retard de livraison commande #12345",
     priority: "medium",
     status: "pending",
-    assignedTo: "Agent Claire",
     slaHours: 48,
-    createdBy: "human",
+    createdBy: "user",
     conversationId: "chat_001",
     createdAt: "2026-01-29T10:00:00Z",
   },
@@ -20,7 +19,6 @@ export const ticketsData: Ticket[] = [
     subject: "Compte suspendu suite activité suspecte",
     priority: "high",
     status: "resolved",
-    assignedTo: "Agent Lucas",
     slaHours: 24,
     createdBy: "ai",
     conversationId: "chat_002",
@@ -32,7 +30,6 @@ export const ticketsData: Ticket[] = [
     subject: "Crash application iOS",
     priority: "high",
     status: "pending",
-    assignedTo: "Agent Sarah",
     slaHours: 24,
     createdBy: "ai",
     conversationId: "chat_003",
@@ -44,9 +41,8 @@ export const ticketsData: Ticket[] = [
     subject: "Export des données utilisateur",
     priority: "low",
     status: "open",
-    assignedTo: "Agent Sarah",
     slaHours: 72,
-    createdBy: "human",
+    createdBy: "user",
     conversationId: "chat_003",
     createdAt: "2026-01-27T14:15:00Z",
   },
@@ -56,9 +52,8 @@ export const ticketsData: Ticket[] = [
     subject: "Changement de forfait abonnement",
     priority: "low",
     status: "resolved",
-    assignedTo: "Agent Marc",
     slaHours: 72,
-    createdBy: "human",
+    createdBy: "user",
     conversationId: "chat_004",
     createdAt: "2026-01-26T11:45:00Z",
   },
@@ -68,7 +63,6 @@ export const ticketsData: Ticket[] = [
     subject: "Paiement refusé",
     priority: "high",
     status: "pending",
-    assignedTo: "Agent Lina",
     slaHours: 24,
     createdBy: "ai",
     conversationId: "chat_006",
@@ -80,9 +74,8 @@ export const ticketsData: Ticket[] = [
     subject: "Crash app lors modification adresse",
     priority: "high",
     status: "open",
-    assignedTo: "Agent Tech",
     slaHours: 12,
-    createdBy: "human",
+    createdBy: "user",
     conversationId: "chat_006",
     createdAt: "2026-01-30T05:00:00Z",
   },
@@ -92,7 +85,6 @@ export const ticketsData: Ticket[] = [
     subject: "Conseil produit – casque Bluetooth",
     priority: "low",
     status: "resolved",
-    assignedTo: "Agent Julie",
     slaHours: 72,
     createdBy: "ai",
     conversationId: "chat_007",
@@ -104,7 +96,6 @@ export const ticketsData: Ticket[] = [
     subject: "Restauration de compte supprimé",
     priority: "high",
     status: "pending",
-    assignedTo: "Agent Senior",
     slaHours: 6,
     createdBy: "ai",
     conversationId: "chat_008",
@@ -116,9 +107,8 @@ export const ticketsData: Ticket[] = [
     subject: "Perte de données utilisateur",
     priority: "high",
     status: "pending",
-    assignedTo: "Support Niveau 2",
     slaHours: 4,
-    createdBy: "human",
+    createdBy: "user",
     conversationId: "chat_008",
     createdAt: "2026-01-30T07:30:00Z",
   },
@@ -128,7 +118,6 @@ export const ticketsData: Ticket[] = [
     subject: "Réinitialisation mot de passe",
     priority: "medium",
     status: "resolved",
-    assignedTo: "Agent Lucas",
     slaHours: 48,
     createdBy: "ai",
     conversationId: "chat_009",
@@ -140,7 +129,6 @@ export const ticketsData: Ticket[] = [
     subject: "Politique de retour produit",
     priority: "low",
     status: "resolved",
-    assignedTo: "Agent Emma",
     slaHours: 72,
     createdBy: "ai",
     conversationId: "chat_011",
@@ -152,7 +140,6 @@ export const ticketsData: Ticket[] = [
     subject: "Produit défectueux – demande remboursement",
     priority: "high",
     status: "pending",
-    assignedTo: "Agent Senior",
     slaHours: 12,
     createdBy: "ai",
     conversationId: "chat_012",
@@ -164,9 +151,8 @@ export const ticketsData: Ticket[] = [
     subject: "Client mécontent – conflit commercial",
     priority: "high",
     status: "pending",
-    assignedTo: "Responsable Support",
     slaHours: 6,
-    createdBy: "human",
+    createdBy: "user",
     conversationId: "chat_012",
     createdAt: "2026-01-30T06:45:00Z",
   },
@@ -176,7 +162,6 @@ export const ticketsData: Ticket[] = [
     subject: "Assistance achat cadeau",
     priority: "low",
     status: "resolved",
-    assignedTo: "Agent Julie",
     slaHours: 72,
     createdBy: "ai",
     conversationId: "chat_013",
@@ -234,10 +219,7 @@ export function mapStatus(status: TicketStatus) {
   }
 }
 
-export function getSlaRemaining(
-  createdAt: string,
-  slaHours: number
-) {
+export function getSlaRemaining(createdAt: string, slaHours: number) {
   const created = new Date(createdAt).getTime();
   const now = Date.now();
 
@@ -270,6 +252,3 @@ export function getSlaStatus(remainingMs: number) {
     color: "bg-green-100 text-green-700",
   };
 }
-
-
-

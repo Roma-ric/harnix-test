@@ -90,7 +90,7 @@ const KpiCharts = () => {
                   {kpi.label}
                 </span>
               </div>
-              <div className={`font-bold text-4xl -mt-4 ${textColor}`}>
+              <div className={`font-bold text-2xl xs:text-4xl -mt-4 ${textColor}`}>
                 {kpi.prefix}
                 {typeof kpi.count === "number" && kpi.suffix === "%"
                   ? kpi.count.toFixed(1)

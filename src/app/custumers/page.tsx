@@ -91,8 +91,7 @@ const clientColumns: ColumnDef<Client>[] = [
   },
   {
     id: "actions",
-    cell: ({ row }) => {
-      const client = row.original;
+    cell: ({  }) => {
 
       return (
         <DropdownMenu>
@@ -138,14 +137,14 @@ export default function ClientsTable() {
   return (
     <div className="space-y-4">
       {/* Filtres */}
-      <div className="flex gap-3 flex-wrap">
+      <div className="flex gap-3 overflow-x-auto scrollbar-lock-hide">
         <Input
           placeholder="Rechercher un client..."
           value={(table.getColumn("fullName")?.getFilterValue() as string) ?? ""}
           onChange={(e) =>
             table.getColumn("fullName")?.setFilterValue(e.target.value)
           }
-          className="max-w-sm"
+          className="min-w-60 w-sm"
         />
 
         <Input
@@ -154,7 +153,7 @@ export default function ClientsTable() {
           onChange={(e) =>
             table.getColumn("company")?.setFilterValue(e.target.value)
           }
-          className="max-w-sm"
+          className="min-w-60 w-sm"
         />
       </div>
 

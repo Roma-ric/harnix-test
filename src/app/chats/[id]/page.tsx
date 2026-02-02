@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { chats } from "@/utils/chats-utils";
-import { formatDateTime, getInitials } from "@/utils/utils";
+import { formatDateTime, getInitials } from "@/lib/utils";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -116,7 +116,7 @@ export default async function ChatsDetails({
                     );
                   } else {
                     return (
-                      // Message de l'IA ou de l'Agent
+                      // Message de l'IA ou du User
                       <div
                         key={message.id}
                         className="w-full flex justify-end mb-3"
@@ -134,7 +134,7 @@ export default async function ChatsDetails({
                               </div>
                               <Button
                                 variant={"secondary"}
-                                title={message.sender === "ai" ? "IA" : "Agent"}
+                                title={message.sender === "ai" ? "IA" : "User"}
                                 className="border h-10 w-10 flex justify-center items-center"
                               >
                                 {message.sender === "ai" ? (

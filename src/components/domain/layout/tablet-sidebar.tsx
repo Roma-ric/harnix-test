@@ -3,7 +3,6 @@
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -13,7 +12,7 @@ import { Button } from "../../ui/button";
 import DesktopSideBar from "./desktop-sidebar";
 import { useState } from "react";
 
-const MobileSidebar = () => {
+const TabletSidebar = () => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -21,7 +20,7 @@ const MobileSidebar = () => {
       <SheetTrigger asChild>
         <Button
           variant={"secondary"}
-          className="border-none flex justify-center items-center w-12 h-12"
+          className="border-none flex justify-center items-center  sm:w-12 sm:h-12  w-10 h-10"
         >
           <Menu className="size-5" />
         </Button>
@@ -34,12 +33,12 @@ const MobileSidebar = () => {
         <SheetHeader>
           <SheetTitle></SheetTitle>
         </SheetHeader>
-        <SheetDescription className="px-3 pb-3 h-full">
+        <div className="px-3 pb-3 h-full">
           <DesktopSideBar className="w-full!" onLinkClick={() => setOpen(false)} />
-        </SheetDescription>
+        </div>
       </SheetContent>
     </Sheet>
   );
 };
 
-export default MobileSidebar;
+export default TabletSidebar;

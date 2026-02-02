@@ -4,7 +4,7 @@ import { Search } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useMemo, useState } from "react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { cn, formatUnreadCount, getInitials, getTimeAgo } from "@/utils/utils";
+import { cn, formatUnreadCount, getInitials, getTimeAgo } from "@/lib/utils";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { chats } from "@/utils/chats-utils";
@@ -99,7 +99,7 @@ const Chats = ({className}:{className?: string}) => {
             </TabsTrigger>
           ))}
         </TabsList>
-        <TabsContent value="all" className="divide-y overflow-y-auto scrollbar-hide">
+        <TabsContent value="all" className="divide-y overflow-y-auto scrollbar-lock-hide">
           {filteredChats &&
             filteredChats.map((chat) => (
               <div key={chat.id}>
@@ -107,7 +107,7 @@ const Chats = ({className}:{className?: string}) => {
               </div>
             ))}
         </TabsContent>
-        <TabsContent value="unread" className="divide-y overflow-y-auto scrollbar-hide">
+        <TabsContent value="unread" className="divide-y overflow-y-auto scrollbar-lock-hide">
           {filteredChats &&
             filteredChats.map((chat) => (
               <div key={chat.id}>

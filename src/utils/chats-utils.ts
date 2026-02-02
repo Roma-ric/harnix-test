@@ -24,7 +24,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_001_02",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Bonjour Marie ! Je vais vous aider. Quel est le problème exactement ?",
         read: true,
@@ -42,7 +42,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_001_04",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Je comprends votre inquiétude. Laissez-moi vérifier le statut de votre commande.",
         read: true,
@@ -52,7 +52,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_001_06",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Merci pour la capture d'écran. Je vois que votre colis est en transit depuis 5 jours.",
         read: true,
@@ -78,7 +78,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_001_09",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Exactement. Votre colis devrait arriver d'ici 3 jours maximum.",
         read: true,
@@ -96,7 +96,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_001_12",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Parfait ! Si vous n'avez rien reçu d'ici lundi, contactez-nous à nouveau.",
         read: true,
@@ -113,7 +113,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_001_14",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content: "Bien sûr ! Votre numéro de suivi est : FR789456123",
         read: true,
         createdAt: "2026-01-30T10:31:00Z",
@@ -129,7 +129,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_001_16",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content: "De rien ! Puis-je vous aider avec autre chose aujourd'hui ?",
         read: true,
         createdAt: "2026-01-30T10:33:45Z",
@@ -145,7 +145,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_001_18",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content: "Très bien ! N'hésitez pas à nous contacter si besoin.",
         read: true,
         createdAt: "2026-01-30T14:31:15Z",
@@ -161,7 +161,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_001_20",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content: "Avec plaisir ! Bonne journée Marie",
         read: false,
         createdAt: "2026-01-30T14:32:50Z",
@@ -206,7 +206,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_002_05",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Bonjour Jean, je prends le relais. Laissez-moi examiner votre compte.",
         read: true,
@@ -223,7 +223,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_002_07",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Je vois le problème. Votre compte a été suspendu pour activité inhabituelle détectée hier soir.",
         read: true,
@@ -240,7 +240,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_002_09",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Notre système a détecté plusieurs tentatives de connexion depuis différents pays.",
         read: true,
@@ -257,7 +257,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_002_11",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "C'est possible. Pour votre sécurité, je vais réinitialiser votre mot de passe.",
         read: true,
@@ -275,7 +275,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_002_14",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Voici un guide pour sécuriser votre compte. Je vous envoie aussi un lien de réinitialisation par email.",
         read: true,
@@ -292,7 +292,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_002_16",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Parfait ! N'oubliez pas d'activer l'authentification à deux facteurs.",
         read: true,
@@ -310,7 +310,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_002_19",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content: "Voici un tutoriel vidéo qui vous explique tout pas à pas.",
         read: true,
         createdAt: "2026-01-30T09:24:30Z",
@@ -397,7 +397,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_003_09",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Bonjour ! Je prends le relais. Installez la mise à jour, elle corrige justement ce bug.",
         read: true,
@@ -414,7 +414,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_003_11",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "La mise à jour fait 250 Mo, ça peut prendre quelques minutes selon votre connexion.",
         read: true,
@@ -432,7 +432,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_003_13",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content: "Bien sûr ! Je vous écoute.",
         read: true,
         createdAt: "2026-01-30T14:15:30Z",
@@ -449,7 +449,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_003_16",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Voici un tutoriel vidéo. Vous trouverez l'option dans Paramètres > Mes données > Exporter.",
         read: true,
@@ -459,7 +459,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_003_18",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content: "Et voici aussi un guide PDF détaillé si vous préférez lire.",
         read: true,
         createdAt: "2026-01-30T14:19:30Z",
@@ -502,7 +502,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_004_02",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Bonjour Pierre. Je suis désolé d'apprendre que vous souhaitez partir. Puis-je savoir pourquoi ?",
         read: true,
@@ -519,7 +519,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_004_04",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Je comprends tout à fait. Savez-vous que nous avons des forfaits plus économiques ?",
         read: true,
@@ -537,7 +537,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_004_07",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Voici nos différents forfaits. Vous êtes actuellement sur le Premium à 29,99€/mois.",
         read: true,
@@ -555,7 +555,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_004_09",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Vous perdez l'accès aux fonctionnalités avancées et le stockage illimité. Mais les fonctions de base restent.",
         read: true,
@@ -573,7 +573,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_004_11",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Dans ce cas, le forfait Basique serait parfait pour vous ! Voulez-vous que je fasse le changement ?",
         read: true,
@@ -590,7 +590,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_004_13",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Le changement sera effectif à partir de votre prochaine date de facturation, le 15 février.",
         read: true,
@@ -608,7 +608,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_004_15",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Exactement ! Vous profitez de votre forfait Premium actuel jusqu'à cette date.",
         read: true,
@@ -625,7 +625,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_004_17",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Avec plaisir ! Je suis content qu'on ait pu trouver une solution qui vous convient.",
         read: true,
@@ -634,7 +634,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_004_18",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Vous recevrez un email de confirmation dans quelques minutes.",
         read: true,
@@ -712,7 +712,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_006_06",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Bonjour ! Je reprends votre demande. Avez-vous suffisamment de fonds sur votre compte ?",
         read: true,
@@ -729,7 +729,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_006_08",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Je comprends votre frustration. Essayez avec une autre carte de paiement si possible ?",
         read: true,
@@ -747,7 +747,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_006_10",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "C'est étrange. Pouvez-vous me faire une capture d'écran du message d'erreur ?",
         read: true,
@@ -757,7 +757,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_006_12",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Merci. Je vois le problème. Votre adresse de facturation ne correspond pas à celle de votre carte.",
         read: true,
@@ -774,7 +774,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_006_14",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Voilà le problème ! Mettez à jour votre adresse dans votre profil et réessayez.",
         read: true,
@@ -792,7 +792,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_006_17",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Voici un tutoriel vidéo. Allez dans Paramètres > Mon profil > Adresse de facturation.",
         read: true,
@@ -916,7 +916,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_007_14",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Bonjour ! Oui, le Sennheiser Momentum 4 est disponible en noir et en blanc.",
         read: true,
@@ -933,7 +933,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_007_16",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Oui ! Livraison express en 24h pour 9,90€ ou standard gratuite en 3-5 jours.",
         read: true,
@@ -950,7 +950,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_007_18",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Je vous envoie le lien direct vers le produit avec le code promo FAST24 pour -10€ sur l'express.",
         read: true,
@@ -1028,7 +1028,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_008_06",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Bonjour ! Je m'occupe de votre cas personnellement. Quelle est votre adresse email ?",
         read: true,
@@ -1045,7 +1045,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_008_08",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Merci. Je vérifie votre compte... Oui, je vois la suppression du 30/01 à 16h45.",
         read: true,
@@ -1062,7 +1062,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_008_10",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Absolument. Je lance la procédure de restauration. Cela prendra environ 15 minutes.",
         read: true,
@@ -1079,7 +1079,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_008_12",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "C'est le temps nécessaire pour restaurer toutes vos données en toute sécurité.",
         read: true,
@@ -1089,7 +1089,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_008_14",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Voici le document qui explique le processus de restauration détaillé.",
         read: true,
@@ -1106,7 +1106,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_008_16",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Restez connecté sur cette conversation, je vous tiendrai informé de la progression.",
         read: true,
@@ -1228,7 +1228,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_009_11",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Bonjour ! Les liens expirent après 15 minutes. Je vous en renvoie un nouveau.",
         read: true,
@@ -1245,7 +1245,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_009_13",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content: "Super ! Cette fois vous avez 15 minutes pour l'utiliser.",
         read: true,
         createdAt: "2026-01-30T10:15:45Z",
@@ -1261,7 +1261,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_009_15",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content: "Excellent ! Notez-le dans un endroit sûr cette fois",
         read: true,
         createdAt: "2026-01-30T10:19:15Z",
@@ -1277,7 +1277,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_009_17",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Avec plaisir ! Je vous conseille aussi d'activer l'authentification à deux facteurs.",
         read: true,
@@ -1383,7 +1383,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_011_10",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Bonjour ! Une fois que nous recevons l'article, le remboursement prend 3-5 jours ouvrés.",
         read: true,
@@ -1400,7 +1400,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_011_12",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Allez dans votre compte > Mes commandes > Sélectionnez l'article > Retourner cet article.",
         read: true,
@@ -1410,7 +1410,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_011_14",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Voici une vidéo qui vous montre toute la procédure étape par étape.",
         read: true,
@@ -1427,7 +1427,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_011_16",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Idéalement oui, mais ce n'est pas obligatoire. L'important est que l'article soit en bon état.",
         read: true,
@@ -1445,7 +1445,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_011_18",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Pas de problème ! Sélectionnez simplement 'Échanger' au lieu de 'Retourner' et choisissez le nouvel article.",
         read: true,
@@ -1507,7 +1507,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_012_05",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Bonjour, je comprends votre frustration. C'est effectivement un défaut de fabrication.",
         read: true,
@@ -1524,7 +1524,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_012_07",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Je vous propose deux options : un remplacement immédiat ou un remboursement complet.",
         read: true,
@@ -1541,7 +1541,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_012_09",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Nous pouvons vous l'envoyer en express, livraison demain avant 12h, gratuitement bien sûr.",
         read: true,
@@ -1558,7 +1558,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_012_11",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Le livreur reprendra l'ancien produit lors de la livraison du nouveau. Tout est pris en charge.",
         read: true,
@@ -1575,7 +1575,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_012_13",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Je vous assure que nous vérifions chaque produit de remplacement avant envoi. C'est très rare.",
         read: true,
@@ -1592,7 +1592,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_012_15",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Vous avez absolument raison. Pour compenser ce désagrément, je vous offre un bon de 20€ sur votre prochaine commande.",
         read: false,
@@ -1694,7 +1694,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_013_06",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content: "Bonjour ! J'ai quelques excellentes suggestions pour vous.",
         read: true,
         createdAt: "2026-01-30T12:07:00Z",
@@ -1703,7 +1703,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_013_08",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Un batteur électrique de qualité professionnelle à 79€. Très apprécié par nos clients.",
         read: true,
@@ -1713,7 +1713,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_013_10",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Ou ce coffret de couteaux de chef japonais à 95€. Qualité exceptionnelle !",
         read: true,
@@ -1730,7 +1730,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_013_12",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content: "Excellent choix ! C'est pour quelle occasion ?",
         read: true,
         createdAt: "2026-01-30T12:12:45Z",
@@ -1746,7 +1746,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_013_14",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Parfait ! Nous avons un service d'emballage cadeau gratuit. Vous voulez en profiter ?",
         read: true,
@@ -1763,7 +1763,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_013_16",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Génial ! Je peux aussi ajouter une carte avec un message personnalisé si vous voulez.",
         read: true,
@@ -1780,7 +1780,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_013_18",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content: "Écrivez-moi votre message et je l'ajouterai à la carte.",
         read: true,
         createdAt: "2026-01-30T13:15:00Z",
@@ -1857,7 +1857,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_015_06",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Bonjour ! Je vérifie... Votre commande n'a pas encore été expédiée, parfait !",
         read: true,
@@ -1874,7 +1874,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_015_08",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Donnez-moi votre nouvelle adresse complète avec le code postal.",
         read: true,
@@ -1891,7 +1891,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_015_10",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Parfait ! J'ai mis à jour l'adresse. Votre commande sera livrée à cette nouvelle adresse.",
         read: true,
@@ -1901,7 +1901,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_015_12",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content: "Voici la confirmation de votre commande modifiée.",
         read: true,
         createdAt: "2026-01-30T10:44:30Z",
@@ -1917,7 +1917,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_015_14",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Toujours le même délai : livraison prévue le 3 février entre 9h et 12h.",
         read: true,
@@ -1934,7 +1934,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_015_16",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content: "Excellent ! Vous recevrez un SMS la veille pour confirmer.",
         read: true,
         createdAt: "2026-01-30T10:49:45Z",
@@ -1950,7 +1950,7 @@ export const chats: ChatType[] = [
       {
         id: "msg_015_18",
         type: "text",
-        sender: "agent",
+        sender: "user",
         content:
           "Merci beaucoup pour vos compliments ! C'est toujours un plaisir d'aider nos clients.",
         read: true,

@@ -6,8 +6,8 @@ import { Button } from "@/components/ui/button";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import { ArrowRight, Siren } from "lucide-react";
-import { cn } from "@/utils/utils";
 import PulsAILogo from "../pulsai-logo";
+import { cn } from "@/lib/utils";
 
 const DesktopSideBar = ({
   className,
@@ -55,7 +55,7 @@ const DesktopSideBar = ({
         className,
       )}
     >
-      {/* PulsAILogo */}
+      {/* Logo */}
       <div className="border-b border-pulsai-gray-light/5 pb-4 cursor-pointer">
         <Link href={"/"} onClick={(e) => handleLinkClick(e, "/")}>
           <PulsAILogo />{" "}

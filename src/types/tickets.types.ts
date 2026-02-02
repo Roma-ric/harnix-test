@@ -8,9 +8,8 @@ export interface Ticket {
   subject: string;
   priority: TicketPriority;
   status: TicketStatus;
-  assignedTo: string;
   slaHours: number;
-  createdBy: "ai" | "human";
+  createdBy: "ai" | "user";
   conversationId: string;
   createdAt: string;
 }

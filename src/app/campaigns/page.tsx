@@ -136,7 +136,7 @@ export default function CampaignsTable() {
   return (
     <div className="space-y-4 mb-5">
       {/* Filtre */}
-      <div className="flex flex-wrap gap-3 mb-4">
+      <div className="flex overflow-x-auto scrollbar-lock-hide gap-3 mb-4">
         {/* Recherche par nom */}
         <Input
           placeholder="Rechercher une campagne..."
@@ -144,7 +144,7 @@ export default function CampaignsTable() {
           onChange={(e) =>
             table.getColumn("name")?.setFilterValue(e.target.value)
           }
-          className="max-w-sm"
+          className="min-w-60 w-sm"
         />
 
         {/* Filtre statut */}

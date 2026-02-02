@@ -1,4 +1,4 @@
-import { Bell, LucideIcon, MessageSquare, Sun, Ticket } from "lucide-react";
+import { Bell, Bot, CreditCard, LucideIcon, MessageSquare, Shield, Sun, Tag, Ticket } from "lucide-react";
 
 export interface SettingsNavigationMenuType {
   label: string;
@@ -18,18 +18,48 @@ export const SettingsNavigationMenu: {
     children: [
       {
         label: "Général",
-        href: "/",
+        href: "/settings",
         icon: Sun,
       },
       {
         label: "Canaux",
-        href: "/channels",
+        href: "/settings/channels",
         icon: MessageSquare,
+      }
+    ],
+  },
+  {
+    label: "Intélligence",
+    children: [
+      {
+        label: "IA & Assistants",
+        href: "/settings/ai",
+        icon: Bot,
       },
       {
         label: "Notifications",
-        href: "/notifications",
+        href: "/settings/notifications",
         icon: Bell,
+      },
+      {
+        label: "Tags & Catégories",
+        href: "/settings/tags",
+        icon: Tag,
+      },
+    ],
+  },
+  {
+    label: "Système",
+    children: [
+      {
+        label: "Sécurité",
+        href: "/settings/security",
+        icon: Shield,
+      },
+      {
+        label: "Facturation",
+        href: "/settings/billing",
+        icon: CreditCard,
       },
     ],
   },

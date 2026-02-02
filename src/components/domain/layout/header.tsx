@@ -1,12 +1,12 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
+import { Languages, Plus } from "lucide-react";
 import ProfileSheet from "../profile-sheet";
 import Notifications from "../notifications";
-import MobileSidebar from "./mobile-sidebar";
+import TabletSidebar from "./tablet-sidebar";
 import { usePathname } from "next/navigation";
-import { cn } from "@/utils/utils";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 import PulsAILogo from "../pulsai-logo";
 
@@ -32,7 +32,7 @@ const Header = () => {
   };
 
   return (
-    <div className="w-full flex space-x-5 justify-between items-center">
+    <div className="w-full lg:-mt-6 xl:-mt-3 flex space-x-5 -mt-3 justify-between items-center">
       {/* Info */}
       {showInfo ? (
         <div
@@ -58,7 +58,7 @@ const Header = () => {
 
       <div className="border-b xl:hidden flex items-center space-x-2 border-pulsai-gray-light/5 pb-4 pt-6">
         {/* Mobile Ménu */}
-        <MobileSidebar />
+        <TabletSidebar />
 
         {/* Logo */}
         <Link href={"/"}>
@@ -66,19 +66,27 @@ const Header = () => {
         </Link>
       </div>
 
-      <div className="flex items-center space-x-3 lg:-mt-5">
+      <div className="flex items-center space-x-3">
+
         {/* Add Element */}
         <Button
           variant={"secondary"}
-          className="border hidden md:flex bg-pulsai-secondary border-none  justify-center items-center rounded-full w-12 h-12"
+          className="border hidden md:flex bg-pulsai-secondary border-none  justify-center items-center rounded-full  sm:w-12 sm:h-12  w-10 h-10"
         >
           <Plus className="size-5 strok" />
         </Button>
 
+        <Button
+          variant={"secondary"}
+          className="border flex justify-center items-center rounded-full  sm:w-12 sm:h-12  w-10 h-10"
+        >
+          <Languages className="size-5 strok" />
+        </Button>
+        
         {/* Notifications */}
         <Notifications />
 
-        {/* Profile Card */}
+        {/* Profile Sheet */}
         <ProfileSheet />
       </div>
     </div>

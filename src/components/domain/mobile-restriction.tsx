@@ -2,7 +2,7 @@ import { MonitorSmartphone } from "lucide-react";
 
 const MobileRestriction = () => {
   return (
-    <div className="flex sm:hidden min-h-screen w-full items-center justify-center p-5 bg-gray-50">
+    <div className="rounded-lg border flex md:hidden min-h-full! w-full items-center justify-center p-5 bg-gray-50">
       <div className="bg-white rounded-lg shadow-lg p-6 max-w-sm w-full text-center">
         <div className="flex justify-center mb-4">
           <div className="bg-pulsai-primary/10 rounded-full p-4">

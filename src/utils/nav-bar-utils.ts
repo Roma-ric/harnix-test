@@ -24,7 +24,7 @@ export const DesktopSideBarItems: { label: string; children: DesktopSideBarItemT
     children: [
       {
         label: "Vue d'ensemble",
-        href: "/",
+        href: "/overview",
         icon: LayoutDashboard,
       },
       {

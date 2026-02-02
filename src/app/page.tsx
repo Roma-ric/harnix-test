@@ -1,12 +1,9 @@
 "use client";
 
-import KpiCharts from "@/components/domain/overview/kpi-charts";
-
-export default function Overview() {
+export default function Home() {
   return (
-    <div className="w-full">
-      {/* KPI Charts */}
-      <KpiCharts />
+    <div>
+
     </div>
   );
 }

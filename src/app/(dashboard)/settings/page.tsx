@@ -13,7 +13,7 @@ export default function Settings() {
   };
 
   return (
-    <div className="flex min-h-full! max-h-full! relative overflow-y-scroll">
+    <div className="flex min-h-full! max-h-full! relative">
       <div className="flex flex-col w-full min-h-full! max-h-full! relative overflow-y-auto scrollbar-hide">
         {/* Profile Card */}
         <SectionTitle title="Profile Utilisateur" />

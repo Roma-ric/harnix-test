@@ -61,7 +61,7 @@ const Header = () => {
         <TabletSidebar />
 
         {/* Logo */}
-        <Link href={"/"}>
+        <Link href={"/overview"}>
           <PulsAILogo />
         </Link>
       </div>

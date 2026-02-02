@@ -20,8 +20,8 @@ const DesktopSideBar = ({
   const router = useRouter();
 
   const isLinkActive = (href: string) => {
-    if (href === "/") {
-      return pathname === "/";
+    if (href === "/overview") {
+      return pathname === "/overview";
     } else {
       return pathname.startsWith(href);
     }
@@ -57,7 +57,7 @@ const DesktopSideBar = ({
     >
       {/* Logo */}
       <div className="border-b border-pulsai-gray-light/5 pb-4 cursor-pointer">
-        <Link href={"/"} onClick={(e) => handleLinkClick(e, "/")}>
+        <Link href={"/overview"} onClick={(e) => handleLinkClick(e, "/")}>
           <PulsAILogo />{" "}
         </Link>
       </div>

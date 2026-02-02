@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PulsAI
 
-## Getting Started
+## Description du projet
+La plateforme `PulsAI` est un 
 
-First, run the development server:
+## Stack technique utilisée
+- Framework : Next.js
+- Styling : TailwindCSS
+- Icônes : Lucide React
+- Fichiers : en tsx
+- Bibliothèque UI : [Shadcn UI](https://ui.shadcn.com/)
+- Bibliothèque Hooks : [Haiku](https://www.reacthaiku.dev/) & [Usehooks-ts
+](https://usehooks-ts.com/)
 
+## Instructions d'installation (npm install / npm run dev)
+- Installer les dépendances
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Démarrer le projet
+```bash
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Captures d'écran des principales pages
+- Page de connexion
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+![](./public/assets/screenshorts/login.png)
 
-## Learn More
+- Page de création de compte
 
-To learn more about Next.js, take a look at the following resources:
+![](./public/assets/screenshorts/signup.png)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Page de la vue d'ensemble des statistiques
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+![](./public/assets/screenshorts/overview.png)
 
-## Deploy on Vercel
+- Page des conversations
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+![](./public/assets/screenshorts/chats.png)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Page de la liste des tickets
+
+![](./public/assets/screenshorts/tickets.png)
+
+- Page de la liste des campagnes
+
+![](./public/assets/screenshorts/campaigns.png)
+
+- Page de la liste des clients
+
+![](./public/assets/screenshorts/clients.png)
+
+## Liste des pages implémentées
+- [Page de connexion](http://localhost:3000/login)
+- [Page de création de compte](http://localhost:3000/signup)
+- [Page de la vue d'ensemble des statistiques](http://localhost:3000/overview)
+- [Page des conversations](http://localhost:3000/chats)
+- [Page de la liste des tickets](http://localhost:3000/tickets)
+- [Page de la liste des campagnes](http://localhost:3000/campaigns)
+- [Page de la liste des clients](http://localhost:3000/custumers)
+- [Page des paramètres](http://localhost:3000/settings)
+- [Page 404](http://localhost:3000/404)

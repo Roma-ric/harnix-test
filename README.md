@@ -1,7 +1,7 @@
 # PulsAI
 
 ## Description du projet
-La plateforme `PulsAI` est un dashboard permettant au utilisateur d'automatiser la gestion de leur 
+La plateforme `PulsAI` est un tableau de bord qui permet aux utilisateurs d'automatiser la gestion de leurs communications et interactions avec les clients. Elle offre une vue d'ensemble des statistiques, la gestion des tickets, et l'utilisation de l'IA pour optimiser les processus de communication et de marketing.
 
 ## Stack technique utilisée
 - Framework : Next.js
@@ -46,10 +46,10 @@ npm run dev
 ![](./public/assets/screenshorts/clients.png)
 
 ## Liste des pages implémentées
-- [Page de la vue d'ensemble des statistiques](http://localhost:3000/overview)
-- [Page des conversations](http://localhost:3000/chats)
-- [Page de la liste des tickets](http://localhost:3000/tickets)
-- [Page de la liste des campagnes](http://localhost:3000/campaigns)
-- [Page de la liste des clients](http://localhost:3000/custumers)
-- [Page des paramètres](http://localhost:3000/settings)
-- [Page 404](http://localhost:3000/404)
+- [Page de la vue d'ensemble des statistiques](https://puls-ai-xi.vercel.app/overview)
+- [Page des conversations](https://puls-ai-xi.vercel.app/chats)
+- [Page de la liste des tickets](https://puls-ai-xi.vercel.app/tickets)
+- [Page de la liste des campagnes](https://puls-ai-xi.vercel.app/campaigns)
+- [Page de la liste des clients](https://puls-ai-xi.vercel.app/custumers)
+- [Page des paramètres](https://puls-ai-xi.vercel.app/settings)
+- [Page 404](https://puls-ai-xi.vercel.app/404)

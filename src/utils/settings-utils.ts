@@ -1,4 +1,13 @@
-import { Bell, Bot, CreditCard, LucideIcon, MessageSquare, Shield, Sun, Tag, Ticket } from "lucide-react";
+import {
+  Bell,
+  Bot,
+  CreditCard,
+  LucideIcon,
+  MessageSquare,
+  Shield,
+  Sun,
+  Tag,
+} from "lucide-react";
 
 export interface SettingsNavigationMenuType {
   label: string;
@@ -25,7 +34,7 @@ export const SettingsNavigationMenu: {
         label: "Canaux",
         href: "/settings/channels",
         icon: MessageSquare,
-      }
+      },
     ],
   },
   {

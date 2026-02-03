@@ -1,7 +1,7 @@
 # PulsAI
 
 ## Description du projet
-La plateforme `PulsAI` est un 
+La plateforme `PulsAI` est un dashboard permettant au utilisateur d'automatiser la gestion de leur 
 
 ## Stack technique utilisée
 - Framework : Next.js
@@ -12,7 +12,7 @@ La plateforme `PulsAI` est un
 - Bibliothèque Hooks : [Haiku](https://www.reacthaiku.dev/) & [Usehooks-ts
 ](https://usehooks-ts.com/)
 
-## Instructions d'installation (npm install / npm run dev)
+## Instructions d'installation
 - Installer les dépendances
 ```bash
 npm install
@@ -24,13 +24,6 @@ npm run dev
 ```
 
 ## Captures d'écran des principales pages
-- Page de connexion
-
-![](./public/assets/screenshorts/login.png)
-
-- Page de création de compte
-
-![](./public/assets/screenshorts/signup.png)
 
 - Page de la vue d'ensemble des statistiques
 
@@ -53,8 +46,6 @@ npm run dev
 ![](./public/assets/screenshorts/clients.png)
 
 ## Liste des pages implémentées
-- [Page de connexion](http://localhost:3000/login)
-- [Page de création de compte](http://localhost:3000/signup)
 - [Page de la vue d'ensemble des statistiques](http://localhost:3000/overview)
 - [Page des conversations](http://localhost:3000/chats)
 - [Page de la liste des tickets](http://localhost:3000/tickets)
